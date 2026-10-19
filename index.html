@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="es" data-lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aneker · Consultoría en procesos, gestión documental e IA</title>
+<meta name="description" content="Consultoría en procesos digitales, gestión documental, IA aplicada y TIC avanzada. Más de 35 años de experiencia. Experiencia del revés, resultados al derecho.">
+<meta property="og:title" content="Aneker · Experiencia del revés. Resultados al derecho.">
+<meta property="og:description" content="Consultoría en procesos digitales, gestión documental, IA aplicada y TIC avanzada.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aneker.es">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316181D'/%3E%3Ctext x='32' y='47' text-anchor='middle' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' fill='%23C23B22' transform='translate(64 0) scale(-1 1)'%3Ek%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,300;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    var root = document.documentElement, theme = null, lang = null;
+    try { theme = localStorage.getItem('ak-theme'); lang = localStorage.getItem('ak-lang'); } catch (e) {}
+    if (theme === 'light' || theme === 'dark') root.setAttribute('data-theme', theme);
+    if (lang !== 'es' && lang !== 'en') {
+      lang = (navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+    }
+    root.setAttribute('data-lang', lang);
+    root.setAttribute('lang', lang);
+  })();
+</script>
+<style>
+  :root,
+  :root[data-theme="dark"] {
+    --bg: #101115;
+    --sheet: #16181D;
+    --card: #1B1E24;
+    --line: #2A2D34;
+    --strong: #F6F3EE;
+    --text: #CFCAC2;
+    --muted: #8E9198;
+    --accent: #C23B22;
+    --accent-text: #E0563B;
+    --watermark: #1B1D23;
+    --input: #121419;
+    color-scheme: dark;
+  }
+  :root[data-theme="light"] {
+    --bg: #E7E2D8;
+    --sheet: #F6F3EE;
+    --card: #FBF9F5;
+    --line: #DDD7CD;
+    --strong: #16181D;
+    --text: #3A3D45;
+    --muted: #686C74;
+    --accent: #C23B22;
+    --accent-text: #B0341D;
+    --watermark: #EDE8DF;
+    --input: #FFFFFF;
+    color-scheme: light;
+  }
+  html[data-lang="es"] [data-l="en"],
+  html[data-lang="en"] [data-l="es"] { display: none !important; }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Archivo', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 40px 24px 0;
+    transition: background-color .3s ease, color .3s ease;
+  }
+  a { color: inherit; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; letter-spacing: 0.06em; }
+  .k { display: inline-block; transform: scaleX(-1); color: var(--accent); }
+  .logo .k, .mini-logo .k { margin: 0 -0.03em 0 0.07em; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .sheet {
+    position: relative;
+    max-width: 1180px;
+    margin: 0 auto;
+    background: var(--sheet);
+    border: 1px solid var(--line);
+    overflow: clip;
+    transition: background-color .3s ease, border-color .3s ease;
+  }
+
+  /* ---------- Barra superior ---------- */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--sheet);
+    transition: background-color .3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 56px;
+    border-bottom: 1px solid var(--line);
+  }
+  .mini-logo {
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: -0.04em;
+    color: var(--strong);
+    text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+    min-width: 70px;
+  }
+  .scrolled .mini-logo { opacity: 1; pointer-events: auto; }
+  .logo {
+    margin: 0 0 14px;
+    font-weight: 800;
+    font-size: clamp(72px, 11vw, 136px);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    color: var(--strong);
+  }
+  .nav { display: flex; gap: 28px; font-size: 10px; }
+  .nav a { color: var(--muted); text-decoration: none; }
+  .nav a:hover { color: var(--strong); }
+  .controls { display: flex; gap: 8px; align-items: center; }
+  .seg {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 2px;
+    background: var(--card);
+  }
+  .seg button, .icon-btn {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    min-height: 28px;
+  }
+  .seg button { padding: 0 12px; border-radius: 999px; }
+  .seg button[aria-pressed="true"] { background: var(--accent); color: #F6F3EE; }
+  .seg button:hover:not([aria-pressed="true"]), .icon-btn:hover { color: var(--strong); }
+  .icon-btn {
+    width: 34px; height: 34px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--card);
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .icon-btn svg { width: 15px; height: 15px; }
+  :root[data-theme="dark"] .icon-moon, :root[data-theme="light"] .icon-sun { display: none; }
+
+  /* ---------- Portada ---------- */
+  .hero {
+    position: relative;
+    padding: 72px 56px 72px;
+  }
+  .watermark {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%) scaleX(-1);
+    font-weight: 800;
+    font-size: 520px;
+    line-height: 0.8;
+    color: var(--watermark);
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero-inner { position: relative; max-width: 720px; }
+  .kicker { font-size: 10px; color: var(--accent-text); margin-bottom: 20px; }
+  .hero h1 {
+    margin: 0 0 22px;
+    font-weight: 200;
+    font-size: clamp(28px, 3.6vw, 44px);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    color: var(--strong);
+  }
+  .hero h1 b { font-weight: 800; }
+  .hero .lede { font-size: 16px; line-height: 1.7; max-width: 560px; margin: 0 0 32px; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 20px;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    color: var(--strong);
+    background: transparent;
+    cursor: pointer;
+    transition: border-color .2s ease, background-color .2s ease, color .2s ease;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent-text); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #F6F3EE; }
+  .btn.primary:hover { background: #A93019; border-color: #A93019; color: #F6F3EE; }
+  .btn svg { width: 12px; height: 12px; }
+
+  .facts {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--line);
+  }
+  .fact { padding: 26px 56px 28px; border-right: 1px solid var(--line); }
+  .fact:last-child { border-right: 0; }
+  .fact .n { font-weight: 800; font-size: 28px; letter-spacing: -0.03em; color: var(--strong); }
+  .fact .n span { color: var(--accent); }
+  .fact .l { font-size: 10px; color: var(--muted); margin-top: 6px; line-height: 1.6; }
+
+  /* ---------- Secciones ---------- */
+  .section {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 8fr);
+    gap: 40px;
+    padding: 72px 56px;
+    border-top: 1px solid var(--line);
+  }
+  .side { display: flex; flex-direction: column; gap: 8px; }
+  .numeral { font-weight: 800; font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; color: var(--accent); }
+  .word { font-weight: 300; font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); }
+  .section h2 {
+    margin: 0 0 14px;
+    font-weight: 300;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--strong);
+  }
+  .section h2 b { font-weight: 700; }
+  .section .intro { font-size: 15px; line-height: 1.75; margin: 0 0 32px; max-width: 620px; }
+
+  .services {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .service { background: var(--sheet); padding: 26px 26px 28px; }
+  .service .idx { font-size: 10px; color: var(--accent-text); }
+  .service h3 { margin: 12px 0 8px; font-weight: 700; font-size: 16px; color: var(--strong); letter-spacing: -0.01em; }
+  .service p { margin: 0; font-size: 13.5px; line-height: 1.7; }
+  .service.wide { grid-column: 1 / -1; }
+
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .step { border-top: 2px solid var(--line); padding-top: 18px; }
+  .step:nth-child(2) { border-top-color: var(--accent); }
+  .step .idx { font-size: 10px; color: var(--muted); }
+  .step h3 { margin: 10px 0 8px; font-weight: 700; font-size: 16px; color: var(--strong); }
+  .step h3 .k { font-weight: 800; }
+  .step p { margin: 0; font-size: 13.5px; line-height: 1.7; }
+
+  .about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; }
+  .about p { font-size: 15px; line-height: 1.75; margin: 0 0 16px; }
+  .about .quote {
+    font-weight: 200;
+    font-size: 26px;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: var(--strong);
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+    margin: 0;
+  }
+  .about .quote b { font-weight: 700; }
+  .about .sig { font-size: 10px; color: var(--muted); margin-top: 14px; padding-left: 22px; }
+
+
+  /* ---------- Equipo ---------- */
+  .subhead {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;
+    margin: 56px 0 10px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+  .subhead h3 { margin: 0; font-weight: 300; font-size: 20px; color: var(--strong); letter-spacing: -0.01em; }
+  .subhead h3 b { font-weight: 700; }
+  .subhead .note { font-size: 10px; color: var(--muted); }
+  .subintro { font-size: 14px; line-height: 1.7; margin: 0 0 22px; max-width: 620px; }
+  .agents { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .agent { border: 1px solid var(--line); background: var(--card); padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+  .agent-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .avatar { width: 52px; height: 52px; border-radius: 14px; background: var(--sheet); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
+  .avatar svg { width: 30px; height: 30px; }
+  .av-a { fill: var(--accent); } .av-s { fill: var(--strong); } .av-m { fill: var(--muted); }
+  .av-sa { stroke: var(--accent); } .av-ss { stroke: var(--strong); }
+  .chip { font-size: 9px; letter-spacing: 0.1em; color: var(--accent-text); border: 1px solid var(--accent); border-radius: 999px; padding: 3px 8px; }
+  .agent h4 { margin: 2px 0 0; font-weight: 800; font-size: 18px; letter-spacing: -0.02em; color: var(--strong); }
+  .agent h4 .rev { font-weight: 300; color: var(--muted); font-size: 12px; letter-spacing: 0; margin-left: 6px; }
+  .agent .role { font-size: 10px; color: var(--muted); }
+  .agent p { margin: 0; font-size: 13px; line-height: 1.6; }
+  .roles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .roleitem { background: var(--sheet); padding: 18px 18px 20px; }
+  .roleitem .idx { font-size: 10px; color: var(--accent-text); }
+  .roleitem h4 { margin: 10px 0 6px; font-size: 14px; font-weight: 700; color: var(--strong); }
+  .roleitem p { margin: 0; font-size: 12.5px; line-height: 1.6; }
+
+  .lab {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    border: 1px solid var(--line);
+    background: var(--card);
+  }
+  .lab-body { padding: 30px; }
+  .lab-body .tagline { font-size: 10px; color: var(--accent-text); }
+  .lab-body h3 { margin: 12px 0 10px; font-weight: 800; font-size: 22px; letter-spacing: -0.03em; color: var(--strong); }
+  .lab-body p { margin: 0 0 18px; font-size: 13.5px; line-height: 1.7; }
+  .lab-body ul { margin: 0 0 24px; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .lab-body li { font-size: 13px; display: flex; gap: 10px; align-items: baseline; }
+  .lab-body li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; transform: translateY(-1px); }
+  .lab-note { font-size: 10px; color: var(--muted); margin-top: 12px; }
+  .lab-art { border-left: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .lab-art svg { width: 100%; max-width: 320px; height: auto; }
+  .la-bg { fill: var(--sheet); }
+  .la-line { stroke: var(--line); }
+  .la-muted { fill: var(--line); }
+  .la-accent { fill: var(--accent); }
+  .la-strong { fill: var(--strong); }
+
+  .contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 40px; }
+  .channels { display: grid; gap: 10px; align-content: start; }
+  .channel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    min-height: 56px;
+    padding: 0 18px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    text-decoration: none;
+    transition: border-color .2s ease;
+  }
+  .channel:hover { border-color: var(--accent); }
+  .channel .t { font-size: 10px; color: var(--muted); }
+  .channel .v { font-size: 14px; color: var(--strong); font-weight: 600; margin-top: 3px; }
+  .channel .arrow { color: var(--accent); font-size: 16px; }
+
+  form { display: grid; gap: 14px; }
+  .row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+  label { display: grid; gap: 6px; font-size: 10px; color: var(--muted); }
+  input, textarea, select {
+    font-family: 'Archivo', system-ui, sans-serif;
+    font-size: 14px;
+    color: var(--strong);
+    background: var(--input);
+    border: 1px solid var(--line);
+    border-radius: 0;
+    padding: 12px 14px;
+    width: 100%;
+  }
+  textarea { min-height: 120px; resize: vertical; line-height: 1.6; }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); }
+  .form-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+  .consent { display: flex; gap: 10px; align-items: flex-start; max-width: 360px; font-size: 12px; line-height: 1.55; color: var(--text); cursor: pointer; }
+  .consent input { width: 18px; height: 18px; margin: 1px 0 0; padding: 0; flex-shrink: 0; accent-color: var(--accent); }
+  .consent a { color: var(--accent-text); }
+  .status { font-size: 11px; color: var(--accent-text); min-height: 16px; }
+  .hp { position: absolute; left: -9999px; }
+
+  footer {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 24px 0 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 24px;
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 960px) {
+    .nav { display: none; }
+    .section { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    .side { flex-direction: row; align-items: baseline; gap: 14px; }
+    .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .fact:nth-child(2) { border-right: 0; }
+    .fact:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .about, .contact, .lab { grid-template-columns: minmax(0, 1fr); }
+    .agents, .roles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lab-art { border-left: 0; border-top: 1px solid var(--line); }
+    .watermark { font-size: 360px; right: -40px; }
+  }
+  @media (max-width: 640px) {
+    body { padding: 0; }
+    .sheet { border: 0; }
+    .topbar { padding: 12px 20px; }
+    .hero { padding: 64px 20px 56px; }
+    .fact { padding: 20px; }
+    .section { padding: 52px 20px; }
+    .services, .steps, .agents, .roles { grid-template-columns: minmax(0, 1fr); }
+    .row { grid-template-columns: minmax(0, 1fr); }
+    .watermark { font-size: 260px; right: -50px; top: 42%; }
+    footer { padding: 24px 20px 36px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    body, .sheet { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<main class="sheet">
+
+  <!-- Barra superior -->
+  <header class="topbar">
+    <a class="mini-logo" href="#top" aria-label="Aneker" tabindex="-1">ane<span class="k">k</span>er</a>
+    <nav class="nav mono" aria-label="Principal">
+      <a href="#servicios"><span data-l="es">SERVICIOS</span><span data-l="en">SERVICES</span></a>
+      <a href="#metodo"><span data-l="es">MÉTODO</span><span data-l="en">APPROACH</span></a>
+      <a href="#laboratorio"><span data-l="es">LABORATORIO</span><span data-l="en">LAB</span></a>
+      <a href="#contacto"><span data-l="es">CONTACTO</span><span data-l="en">CONTACT</span></a>
+    </nav>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Idioma / Language">
+        <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" class="icon-btn" id="themeBtn" aria-label="Cambiar a modo claro">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Portada -->
+  <section class="hero" id="top">
+    <div class="watermark" aria-hidden="true">k</div>
+    <div class="hero-inner">
+      <p class="logo" aria-label="Aneker">ane<span class="k">k</span>er</p>
+      <div class="kicker mono">
+        <span data-l="es">CONSULTORÍA · PROCESOS · DOCUMENTOS · IA</span>
+        <span data-l="en">CONSULTING · PROCESSES · DOCUMENTS · AI</span>
+      </div>
+      <h1 data-l="es">Experiencia del revés.<br><b>Resultados al derecho.</b></h1>
+      <h1 data-l="en">Experience, turned around.<br><b>Results, the right way up.</b></h1>
+      <p class="lede" data-l="es">Ayudamos a las empresas a darle la vuelta a sus procesos: menos papel, menos fricción y más decisiones con criterio. Gestión documental, automatización e inteligencia artificial aplicadas con los pies en el suelo.</p>
+      <p class="lede" data-l="en">We help companies turn their processes around: less paper, less friction and better-informed decisions. Document management, automation and artificial intelligence, applied with both feet on the ground.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#contacto"><span data-l="es">HABLEMOS</span><span data-l="en">LET'S TALK</span>
+          <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
+        <a class="btn" href="#servicios"><span data-l="es">VER SERVICIOS</span><span data-l="en">SEE SERVICES</span></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="facts">
+    <div class="fact"><div class="n">35<span>+</span></div><div class="l mono"><span data-l="es">AÑOS DE OFICIO</span><span data-l="en">YEARS IN THE TRADE</span></div></div>
+    <div class="fact"><div class="n">5</div><div class="l mono"><span data-l="es">ÁREAS DE SERVICIO</span><span data-l="en">SERVICE AREAS</span></div></div>
+    <div class="fact"><div class="n">E<span>2</span>E</div><div class="l mono"><span data-l="es">DE LA PREVENTA A LA ENTREGA</span><span data-l="en">FROM PRE-SALES TO DELIVERY</span></div></div>
+    <div class="fact"><div class="n">1</div><div class="l mono"><span data-l="es">UN SOLO INTERLOCUTOR</span><span data-l="en">ONE SINGLE POINT OF CONTACT</span></div></div>
+  </div>
+
+  <!-- 01 Servicios -->
+  <section class="section" id="servicios">
+    <div class="side">
+      <span class="numeral">01</span>
+      <span class="word"><span data-l="es">Servicios</span><span data-l="en">Services</span></span>
+    </div>
+    <div>
+      <h2 data-l="es">Lo que hacemos, <b>contado sin rodeos.</b></h2>
+      <h2 data-l="en">What we do, <b>in plain words.</b></h2>
+      <p class="intro" data-l="es">Desde un diagnóstico rápido hasta un proyecto completo de principio a fin. Cada servicio se adapta al tamaño y al momento de tu organización.</p>
+      <p class="intro" data-l="en">From a quick assessment to a complete end-to-end project. Every service adapts to the size and stage of your organisation.</p>
+
+      <div class="services">
+        <article class="service">
+          <div class="idx mono">01</div>
+          <h3><span data-l="es">Consultoría de procesos</span><span data-l="en">Process consulting</span></h3>
+          <p data-l="es">Analizamos cómo trabaja hoy tu equipo, detectamos dónde se pierde el tiempo y rediseñamos el proceso para que fluya en digital.</p>
+          <p data-l="en">We look at how your team works today, find where time gets lost and redesign the process so it flows digitally.</p>
+        </article>
+        <article class="service">
+          <div class="idx mono">02</div>
+          <h3><span data-l="es">Gestión documental</span><span data-l="en">Document management</span></h3>
+          <p data-l="es">Implantación, migraciones e integraciones con ERP y otros sistemas. Captura, archivo, flujos de aprobación y cumplimiento normativo.</p>
+          <p data-l="en">Implementation, migrations and integrations with ERP and other systems. Capture, archiving, approval workflows and compliance.</p>
+        </article>
+        <article class="service">
+          <div class="idx mono">03</div>
+          <h3><span data-l="es">IA aplicada</span><span data-l="en">Applied AI</span></h3>
+          <p data-l="es">Agentes y automatizaciones que leen, clasifican y extraen información de tus documentos. IA útil, medible y bajo control.</p>
+          <p data-l="en">Agents and automations that read, classify and extract information from your documents. Useful, measurable AI that stays under control.</p>
+        </article>
+        <article class="service">
+          <div class="idx mono">04</div>
+          <h3><span data-l="es">Consultoría TIC avanzada</span><span data-l="en">Advanced IT consulting</span></h3>
+          <p data-l="es">Arquitectura de soluciones, nube, seguridad e integración de sistemas. Una segunda opinión experta antes de las decisiones importantes.</p>
+          <p data-l="en">Solution architecture, cloud, security and systems integration. An expert second opinion before the big decisions.</p>
+        </article>
+        <article class="service wide">
+          <div class="idx mono">05</div>
+          <h3><span data-l="es">Formación y mentoring</span><span data-l="en">Training and mentoring</span></h3>
+          <p data-l="es">Talleres prácticos y acompañamiento a equipos técnicos y de negocio, para que el conocimiento se quede en casa cuando el proyecto termina.</p>
+          <p data-l="en">Hands-on workshops and coaching for technical and business teams, so the knowledge stays in-house once the project ends.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Método -->
+  <section class="section" id="metodo">
+    <div class="side">
+      <span class="numeral">02</span>
+      <span class="word"><span data-l="es">Método</span><span data-l="en">Approach</span></span>
+    </div>
+    <div>
+      <h2 data-l="es">Tres pasos para <b>darle la vuelta.</b></h2>
+      <h2 data-l="en">Three steps to <b>turn it around.</b></h2>
+      <p class="intro" data-l="es">Ni teoría infinita ni tecnología por la tecnología. Primero entender, después cambiar y, al final, comprobar que funciona.</p>
+      <p class="intro" data-l="en">No endless theory, no technology for its own sake. Understand first, then change, and finally check that it works.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="idx mono"><span data-l="es">PASO 1</span><span data-l="en">STEP 1</span></div>
+          <h3><span data-l="es">Entender</span><span data-l="en">Understand</span></h3>
+          <p data-l="es">Escuchamos, mapeamos el proceso real (no el del manual) y medimos dónde duele.</p>
+          <p data-l="en">We listen, map the real process (not the one in the manual) and measure where it hurts.</p>
+        </div>
+        <div class="step">
+          <div class="idx mono"><span data-l="es">PASO 2</span><span data-l="en">STEP 2</span></div>
+          <h3><span data-l="es">Darle la vuelta</span><span data-l="en">Turn it around</span></h3>
+          <p data-l="es">Rediseñamos el proceso y elegimos la tecnología justa, con una estimación clara de esfuerzo y coste.</p>
+          <p data-l="en">We redesign the process and pick just the right technology, with a clear estimate of effort and cost.</p>
+        </div>
+        <div class="step">
+          <div class="idx mono"><span data-l="es">PASO 3</span><span data-l="en">STEP 3</span></div>
+          <h3><span data-l="es">Poner en marcha</span><span data-l="en">Make it run</span></h3>
+          <p data-l="es">Implantamos, formamos al equipo y medimos resultados. El proyecto termina cuando funciona, no cuando se entrega.</p>
+          <p data-l="en">We implement, train the team and measure results. The project ends when it works, not when it's delivered.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 Nosotros -->
+  <section class="section" id="nosotros">
+    <div class="side">
+      <span class="numeral">03</span>
+      <span class="word"><span data-l="es">Nosotros</span><span data-l="en">About us</span></span>
+    </div>
+    <div>
+      <h2 data-l="es">Un equipo pequeño, <b>con mucho oficio.</b></h2>
+      <h2 data-l="en">A small team, <b>with a lot of craft.</b></h2>
+      <div class="about">
+        <div>
+          <p data-l="es">Detrás de Aneker hay más de 35 años de experiencia en tecnología, gestión documental y procesos digitales. Conocemos todas las fases de un proyecto: preventa, estimación de esfuerzo, consultoría técnica e implantación de principio a fin.</p>
+          <p data-l="en">Behind Aneker lie more than 35 years of experience in technology, document management and digital processes. We know every stage of a project: pre-sales, effort estimation, technical consulting and end-to-end delivery.</p>
+          <p data-l="es">Aneker es el segundo apellido de nuestro fundador, JJ Requena, escrito al revés. También es nuestra manera de trabajar: mirar los problemas desde el otro lado hasta encontrar la salida.</p>
+          <p data-l="en">Aneker is our founder JJ Requena's second surname, spelled backwards. It is also how we work: looking at problems from the other side until the way out appears.</p>
+        </div>
+        <div>
+          <p class="quote" data-l="es">La tecnología cambia cada año. <b>El criterio para usarla bien</b> se construye en décadas.</p>
+          <p class="quote" data-l="en">Technology changes every year. <b>The judgement to use it well</b> takes decades to build.</p>
+          <div class="sig mono"><span data-l="es">JJ REQUENA · FUNDADOR</span><span data-l="en">JJ REQUENA · FOUNDER</span></div>
+        </div>
+      </div>
+
+      <!-- Equipo digital -->
+      <div class="subhead">
+        <h3 data-l="es">Nuestro <b>equipo digital</b></h3>
+        <h3 data-l="en">Our <b>digital team</b></h3>
+        <span class="note mono"><span data-l="es">AGENTES DE INTELIGENCIA ARTIFICIAL</span><span data-l="en">ARTIFICIAL INTELLIGENCE AGENTS</span></span>
+      </div>
+      <p class="subintro" data-l="es">Trabajamos junto a agentes de IA que hemos creado nosotros. Hacen el trabajo repetitivo en minutos; las personas revisan, deciden y responden. Sus nombres se leen igual al derecho y al revés.</p>
+      <p class="subintro" data-l="en">We work alongside AI agents we built ourselves. They handle repetitive work in minutes; people review, decide and answer. Their names read the same forwards and backwards.</p>
+
+      <div class="agents">
+        <article class="agent">
+          <div class="agent-top">
+            <div class="avatar" aria-hidden="true"><svg viewBox="0 0 30 30"><rect class="av-s" x="6" y="4" width="16" height="22" rx="2"/><rect class="av-a" x="10" y="9" width="12" height="2" rx="1"/><rect class="av-a" x="10" y="14" width="8" height="2" rx="1"/><circle class="av-a" cx="22" cy="22" r="5"/></svg></div>
+            <span class="chip mono">IA</span>
+          </div>
+          <h4>ANA<span class="rev mono">↔ ANA</span></h4>
+          <div class="role mono"><span data-l="es">DOCUMENTOS</span><span data-l="en">DOCUMENTS</span></div>
+          <p data-l="es">Lee, clasifica y extrae datos de facturas, contratos y expedientes.</p>
+          <p data-l="en">Reads, classifies and extracts data from invoices, contracts and files.</p>
+        </article>
+        <article class="agent">
+          <div class="agent-top">
+            <div class="avatar" aria-hidden="true"><svg viewBox="0 0 30 30"><rect class="av-m" x="4" y="18" width="5" height="8" rx="1"/><rect class="av-s" x="12" y="12" width="5" height="14" rx="1"/><rect class="av-a" x="20" y="5" width="5" height="21" rx="1"/></svg></div>
+            <span class="chip mono">IA</span>
+          </div>
+          <h4>OTTO<span class="rev mono">↔ OTTO</span></h4>
+          <div class="role mono"><span data-l="es">ESTIMACIONES</span><span data-l="en">ESTIMATES</span></div>
+          <p data-l="es">Prepara estimaciones de esfuerzo, planificaciones y borradores de propuesta.</p>
+          <p data-l="en">Drafts effort estimates, project plans and proposal outlines.</p>
+        </article>
+        <article class="agent">
+          <div class="agent-top">
+            <div class="avatar" aria-hidden="true"><svg viewBox="0 0 30 30"><circle class="av-ss" cx="13" cy="13" r="8" fill="none" stroke-width="3"/><path class="av-sa" d="M19 19l7 7" stroke-width="3.5" stroke-linecap="round"/><circle class="av-a" cx="13" cy="13" r="3"/></svg></div>
+            <span class="chip mono">IA</span>
+          </div>
+          <h4>AVA<span class="rev mono">↔ AVA</span></h4>
+          <div class="role mono"><span data-l="es">ANÁLISIS</span><span data-l="en">ANALYSIS</span></div>
+          <p data-l="es">Analiza procesos y datos para encontrar cuellos de botella y oportunidades.</p>
+          <p data-l="en">Analyses processes and data to find bottlenecks and opportunities.</p>
+        </article>
+        <article class="agent">
+          <div class="agent-top">
+            <div class="avatar" aria-hidden="true"><svg viewBox="0 0 30 30"><path class="av-s" d="M4 7a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-7l-5 4v-4H7a3 3 0 0 1-3-3z"/><circle class="av-a" cx="23" cy="21" r="5"/></svg></div>
+            <span class="chip mono">IA</span>
+          </div>
+          <h4>BOB<span class="rev mono">↔ BOB</span></h4>
+          <div class="role mono"><span data-l="es">ASISTENCIA</span><span data-l="en">ASSISTANCE</span></div>
+          <p data-l="es">Resuelve dudas técnicas y prepara documentación para los equipos.</p>
+          <p data-l="en">Answers technical questions and prepares documentation for teams.</p>
+        </article>
+      </div>
+
+      <!-- Red de especialistas -->
+      <div class="subhead">
+        <h3 data-l="es">Nuestra <b>red de especialistas</b></h3>
+        <h3 data-l="en">Our <b>specialist network</b></h3>
+        <span class="note mono"><span data-l="es">SEGÚN LO QUE PIDA CADA PROYECTO</span><span data-l="en">AS EACH PROJECT REQUIRES</span></span>
+      </div>
+      <p class="subintro" data-l="es">Cuando un proyecto lo necesita, sumamos especialistas de confianza. Tú sigues teniendo un único interlocutor.</p>
+      <p class="subintro" data-l="en">When a project needs it, we bring in trusted specialists. You still have one single point of contact.</p>
+
+      <div class="roles">
+        <div class="roleitem">
+          <div class="idx mono">A</div>
+          <h4><span data-l="es">Integración de sistemas</span><span data-l="en">Systems integration</span></h4>
+          <p data-l="es">ERP, bases de datos y conectores entre aplicaciones.</p>
+          <p data-l="en">ERP, databases and connectors between applications.</p>
+        </div>
+        <div class="roleitem">
+          <div class="idx mono">B</div>
+          <h4><span data-l="es">Arquitectura cloud</span><span data-l="en">Cloud architecture</span></h4>
+          <p data-l="es">Diseño y despliegue de soluciones en la nube.</p>
+          <p data-l="en">Design and deployment of cloud solutions.</p>
+        </div>
+        <div class="roleitem">
+          <div class="idx mono">C</div>
+          <h4><span data-l="es">Seguridad y cumplimiento</span><span data-l="en">Security and compliance</span></h4>
+          <p data-l="es">Protección de datos, normativa y auditorías.</p>
+          <p data-l="en">Data protection, regulation and audits.</p>
+        </div>
+        <div class="roleitem">
+          <div class="idx mono">D</div>
+          <h4><span data-l="es">Desarrollo a medida</span><span data-l="en">Custom development</span></h4>
+          <p data-l="es">Aplicaciones, automatizaciones y scripts específicos.</p>
+          <p data-l="en">Applications, automations and bespoke scripts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Laboratorio -->
+  <section class="section" id="laboratorio">
+    <div class="side">
+      <span class="numeral">04</span>
+      <span class="word"><span data-l="es">Laboratorio</span><span data-l="en">Lab</span></span>
+    </div>
+    <div>
+      <h2 data-l="es">Herramientas propias <b>para trabajar más rápido.</b></h2>
+      <h2 data-l="en">In-house tools <b>to work faster.</b></h2>
+      <p class="intro" data-l="es">Desarrollamos aplicaciones para acelerar los proyectos y reducir errores. Algunas están disponibles para clientes y colaboradores.</p>
+      <p class="intro" data-l="en">We build applications that speed up projects and reduce errors. Some of them are available to clients and partners.</p>
+
+      <div class="lab">
+        <div class="lab-body">
+          <div class="tagline mono">APP.ANEKER.ES</div>
+          <h3>TheJTool</h3>
+          <p data-l="es">Una suite de utilidades para proyectos de gestión documental, todo en el navegador.</p>
+          <p data-l="en">A suite of utilities for document management projects, all in the browser.</p>
+          <ul>
+            <li><span data-l="es">Constructor de estructuras y categorías documentales</span><span data-l="en">Document structure and category builder</span></li>
+            <li><span data-l="es">Diseño de formularios electrónicos</span><span data-l="en">Electronic form designer</span></li>
+            <li><span data-l="es">Estimaciones de esfuerzo y planificación tipo Gantt</span><span data-l="en">Effort estimates and Gantt-style planning</span></li>
+            <li><span data-l="es">Asistentes con IA</span><span data-l="en">AI assistants</span></li>
+          </ul>
+          <a class="btn primary" href="https://app.aneker.es" target="_blank" rel="noopener">
+            <span data-l="es">ACCEDER</span><span data-l="en">SIGN IN</span>
+            <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 2.5h6v6M9.5 2.5 2.5 9.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+            <span class="sr" data-l="es">(se abre en una pestaña nueva)</span><span class="sr" data-l="en">(opens in a new tab)</span>
+          </a>
+          <div class="lab-note mono"><span data-l="es">ACCESO PARA USUARIOS AUTORIZADOS</span><span data-l="en">FOR AUTHORISED USERS</span></div>
+        </div>
+        <div class="lab-art" aria-hidden="true">
+          <svg viewBox="0 0 320 220">
+            <rect class="la-bg la-line" x="0.5" y="0.5" width="319" height="219" rx="6" stroke-width="1"/>
+            <rect class="la-muted" x="0" y="0" width="64" height="220"/>
+            <circle class="la-accent" cx="20" cy="22" r="6"/>
+            <rect class="la-bg" x="12" y="46" width="40" height="6" rx="3" opacity=".6"/>
+            <rect class="la-bg" x="12" y="62" width="32" height="6" rx="3" opacity=".6"/>
+            <rect class="la-bg" x="12" y="78" width="36" height="6" rx="3" opacity=".6"/>
+            <rect class="la-muted" x="84" y="22" width="120" height="10" rx="5"/>
+            <rect class="la-accent" x="84" y="50" width="70" height="44" rx="4"/>
+            <rect class="la-muted" x="164" y="50" width="70" height="44" rx="4"/>
+            <rect class="la-muted" x="244" y="50" width="56" height="44" rx="4"/>
+            <rect class="la-muted" x="84" y="112" width="216" height="8" rx="4"/>
+            <rect class="la-muted" x="84" y="130" width="170" height="8" rx="4"/>
+            <rect class="la-muted" x="84" y="148" width="190" height="8" rx="4"/>
+            <rect class="la-accent" x="84" y="176" width="80" height="22" rx="11"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 Contacto -->
+  <section class="section" id="contacto">
+    <div class="side">
+      <span class="numeral">05</span>
+      <span class="word"><span data-l="es">Contacto</span><span data-l="en">Contact</span></span>
+    </div>
+    <div>
+      <h2 data-l="es">¿Le damos la vuelta <b>a tu proyecto?</b></h2>
+      <h2 data-l="en">Shall we turn <b>your project around?</b></h2>
+      <p class="intro" data-l="es">Cuéntanos en qué punto estás. Te responderá una persona, no un sistema automático.</p>
+      <p class="intro" data-l="en">Tell us where you are. A real person will reply, not an automated system.</p>
+
+      <div class="contact">
+        <div class="channels">
+          <a class="channel" id="lnkEmail" href="#">
+            <div><div class="t mono">EMAIL</div><div class="v" id="txtEmail"></div></div><span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="channel" id="lnkCal" href="#" target="_blank" rel="noopener">
+            <div><div class="t mono"><span data-l="es">AGENDAR REUNIÓN</span><span data-l="en">BOOK A MEETING</span></div><div class="v"><span data-l="es">30 minutos, sin compromiso</span><span data-l="en">30 minutes, no strings attached</span></div></div><span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="channel" id="lnkIn" href="#" target="_blank" rel="noopener">
+            <div><div class="t mono">LINKEDIN</div><div class="v">Aneker</div></div><span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <form id="contactForm" novalidate>
+          <div class="row">
+            <label><span class="mono"><span data-l="es">NOMBRE</span><span data-l="en">NAME</span></span><input name="name" autocomplete="name" required></label>
+            <label><span class="mono">EMAIL</span><input name="email" type="email" autocomplete="email" required></label>
+          </div>
+          <div class="row">
+            <label><span class="mono"><span data-l="es">EMPRESA</span><span data-l="en">COMPANY</span></span><input name="company" autocomplete="organization"></label>
+            <label><span class="mono"><span data-l="es">INTERÉS</span><span data-l="en">INTEREST</span></span>
+              <select name="topic">
+                <option value="procesos" data-l="es">Consultoría de procesos</option>
+                <option value="documental" data-l="es">Gestión documental</option>
+                <option value="ia" data-l="es">IA aplicada</option>
+                <option value="tic" data-l="es">Consultoría TIC avanzada</option>
+                <option value="formacion" data-l="es">Formación y mentoring</option>
+                <option value="otro" data-l="es">Otro</option>
+                <option value="processes" data-l="en">Process consulting</option>
+                <option value="documents" data-l="en">Document management</option>
+                <option value="ai" data-l="en">Applied AI</option>
+                <option value="it" data-l="en">Advanced IT consulting</option>
+                <option value="training" data-l="en">Training and mentoring</option>
+                <option value="other" data-l="en">Other</option>
+              </select>
+            </label>
+          </div>
+          <label><span class="mono"><span data-l="es">MENSAJE</span><span data-l="en">MESSAGE</span></span><textarea name="message" required></textarea></label>
+          <input class="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="form-foot">
+            <label class="consent">
+              <input type="checkbox" name="consent" required>
+              <span><span data-l="es">He leído la <a href="privacidad.html">política de privacidad</a> y acepto que uséis mis datos para responder a mi mensaje.</span><span data-l="en">I have read the <a href="privacidad.html">privacy policy</a> and agree to my details being used to reply to my message.</span></span>
+            </label>
+            <button class="btn primary" type="submit"><span data-l="es">ENVIAR</span><span data-l="en">SEND</span>
+              <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
+          </div>
+          <div class="status mono" id="formStatus" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="mono">
+  <span>© <span id="year">2026</span> ANE<span class="k">K</span>ER</span>
+  <span><span data-l="es">EXPERIENCIA DEL REVÉS. RESULTADOS AL DERECHO.</span><span data-l="en">EXPERIENCE, TURNED AROUND. RESULTS, THE RIGHT WAY UP.</span></span>
+  <span><a href="aviso-legal.html"><span data-l="es">AVISO LEGAL</span><span data-l="en">LEGAL NOTICE</span></a> · <a href="privacidad.html"><span data-l="es">PRIVACIDAD</span><span data-l="en">PRIVACY</span></a></span>
+</footer>
+
+<script>
+  /* ===== CONFIGURACIÓN: cambia aquí tus datos ===== */
+  var CONFIG = {
+    email: 'hola@aneker.es',                      // Tu email de contacto
+    linkedin: 'https://www.linkedin.com/in/TU-PERFIL', // Tu perfil de LinkedIn
+    calendar: 'https://calendly.com/TU-USUARIO',  // Tu enlace de agenda (Calendly, Cal.com, Google Calendar…)
+    formEndpoint: ''                              // Opcional: URL de Formspree u otro servicio. Vacío = abre el correo del visitante
+  };
+  /* ================================================ */
+
+  (function () {
+    var root = document.documentElement;
+    var themeBtn = document.getElementById('themeBtn');
+    var langBtns = document.querySelectorAll('[data-set-lang]');
+    var meta = document.querySelector('meta[name="description"]');
+    var T = {
+      es: {
+        desc: 'Consultoría en procesos digitales, gestión documental, IA aplicada y TIC avanzada. Más de 35 años de experiencia. Experiencia del revés, resultados al derecho.',
+        toLight: 'Cambiar a modo claro', toDark: 'Cambiar a modo oscuro',
+        missing: 'Rellena nombre, un email válido y el mensaje.',
+        consent: 'Para enviar el mensaje, acepta la política de privacidad.',
+        sending: 'Enviando…', ok: 'Gracias. Hemos recibido tu mensaje y te responderemos pronto.',
+        fail: 'No se ha podido enviar. Escríbenos directamente a ',
+        mailOpen: 'Se ha abierto tu programa de correo con el mensaje preparado.',
+        subject: 'Contacto desde aneker.es'
+      },
+      en: {
+        desc: 'Consulting in digital processes, document management, applied AI and advanced IT. More than 35 years of experience.',
+        toLight: 'Switch to light mode', toDark: 'Switch to dark mode',
+        missing: 'Please fill in your name, a valid email and your message.',
+        consent: 'Please accept the privacy policy to send your message.',
+        sending: 'Sending…', ok: 'Thank you. We have received your message and will reply soon.',
+        fail: 'The message could not be sent. Write to us directly at ',
+        mailOpen: 'Your email app has opened with the message ready to send.',
+        subject: 'Contact from aneker.es'
+      }
+    };
+    function lang() { return root.getAttribute('data-lang') === 'en' ? 'en' : 'es'; }
+    function save(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+
+    // Mini logo en la cabecera al hacer scroll
+    var bar = document.querySelector('.topbar'), big = document.querySelector('.hero .logo'), mini = document.querySelector('.mini-logo');
+    function onScroll() {
+      var past = big.getBoundingClientRect().bottom < bar.offsetHeight;
+      bar.classList.toggle('scrolled', past);
+      mini.setAttribute('tabindex', past ? '0' : '-1');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Datos de contacto
+    document.getElementById('lnkEmail').href = 'mailto:' + CONFIG.email;
+    document.getElementById('txtEmail').textContent = CONFIG.email;
+    document.getElementById('lnkIn').href = CONFIG.linkedin;
+    document.getElementById('lnkCal').href = CONFIG.calendar;
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Tema
+    function updateThemeLabel() {
+      themeBtn.setAttribute('aria-label', root.getAttribute('data-theme') === 'dark' ? T[lang()].toLight : T[lang()].toDark);
+    }
+    themeBtn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      updateThemeLabel();
+      save('ak-theme', next);
+    });
+
+    // Idioma
+    var select = document.querySelector('select[name="topic"]');
+    function setLang(l) {
+      root.setAttribute('data-lang', l);
+      root.setAttribute('lang', l);
+      langBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === l ? 'true' : 'false'); });
+      meta.setAttribute('content', T[l].desc);
+      var first = select.querySelector('option[data-l="' + l + '"]');
+      if (select.selectedOptions[0] && select.selectedOptions[0].getAttribute('data-l') !== l) first.selected = true;
+      Array.prototype.forEach.call(select.options, function (o) { o.disabled = o.getAttribute('data-l') !== l; });
+      updateThemeLabel();
+      save('ak-lang', l);
+    }
+    langBtns.forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); }); });
+    setLang(lang());
+
+    // Formulario
+    var form = document.getElementById('contactForm');
+    var status = document.getElementById('formStatus');
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var t = T[lang()];
+      var d = new FormData(form);
+      var name = (d.get('name') || '').trim(), email = (d.get('email') || '').trim(), msg = (d.get('message') || '').trim();
+      if (d.get('_gotcha')) return;
+      if (!name || !msg || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = t.missing; return; }
+      if (!form.querySelector('input[name="consent"]').checked) { status.textContent = t.consent; return; }
+      var topic = select.selectedOptions[0] ? select.selectedOptions[0].textContent : '';
+
+      if (CONFIG.formEndpoint) {
+        status.textContent = t.sending;
+        fetch(CONFIG.formEndpoint, { method: 'POST', body: d, headers: { 'Accept': 'application/json' } })
+          .then(function (r) {
+            if (!r.ok) throw new Error();
+            form.reset(); setLang(lang()); status.textContent = t.ok;
+          })
+          .catch(function () { status.textContent = t.fail + CONFIG.email; });
+      } else {
+        var body = name + (d.get('company') ? ' (' + d.get('company') + ')' : '') + '\n' + email + '\n' + topic + '\n\n' + msg;
+        window.location.href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent(t.subject + ' · ' + topic) + '&body=' + encodeURIComponent(body);
+        status.textContent = t.mailOpen;
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
