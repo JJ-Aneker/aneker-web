@@ -17,3 +17,12 @@ npm-debug.log*
 # Local env files
 .env
 .env.local
+
+# Dependencies
+node_modules/
+
+# Vercel
+.vercel
+
+.vercel
+.env*

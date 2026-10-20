@@ -1,0 +1,9 @@
+{
+  "name": "aneker-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aneker - Otra mirada. Mejores resultados.",
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  }
+}

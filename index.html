@@ -779,7 +779,7 @@
     email: 'hola@aneker.es',
     linkedin: 'https://www.linkedin.com/company/aneker',
     calendar: 'https://calendly.com/TU-USUARIO',
-    formEndpoint: ''
+    formEndpoint: '/api/contact'
   };
   /* ================================================ */
 
@@ -794,8 +794,9 @@
         toLight: 'Cambiar a modo claro', toDark: 'Cambiar a modo oscuro',
         missing: 'Escribe tu nombre, un email válido y el mensaje.',
         consent: 'Para enviar el mensaje, acepta la política de privacidad.',
-        sending: 'Enviando…', ok: 'Mensaje enviado. Te responderemos pronto.',
-        fail: 'No se ha podido enviar. Escríbenos a ',
+        sending: 'Enviando…',
+        ok: 'Gracias, te respondemos en menos de 24 horas laborables.',
+        fail: 'No se ha podido enviar. Escríbenos directamente a ',
         mailOpen: 'Se ha abierto tu programa de correo con el mensaje listo para enviar.',
         subject: 'Contacto desde aneker.es'
       },
@@ -804,8 +805,9 @@
         toLight: 'Switch to light mode', toDark: 'Switch to dark mode',
         missing: 'Enter your name, a valid email and your message.',
         consent: 'Please accept the privacy policy to send your message.',
-        sending: 'Sending…', ok: 'Message sent. We will reply soon.',
-        fail: 'The message could not be sent. Write to us at ',
+        sending: 'Sending…',
+        ok: 'Thank you, we will reply within 24 business hours.',
+        fail: 'Could not send the message. Write to us directly at ',
         mailOpen: 'Your email app has opened with the message ready to send.',
         subject: 'Contact from aneker.es'
       }
@@ -886,21 +888,80 @@
 
     var form = document.getElementById('contactForm');
     var status = document.getElementById('formStatus');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var formLoadTime = Date.now(); // Timestamp para protección antispam
+
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
       var t = T[lang()];
       var d = new FormData(form);
       var name = (d.get('name') || '').trim(), email = (d.get('email') || '').trim(), msg = (d.get('message') || '').trim();
+
+      // Honeypot: si viene relleno, no hacer nada (silenciosamente)
       if (d.get('_gotcha')) return;
-      if (!name || !msg || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = t.missing; return; }
-      if (!form.querySelector('input[name="consent"]').checked) { status.textContent = t.consent; return; }
-      var topic = select.selectedOptions[0] ? select.selectedOptions[0].textContent : '';
+
+      // Validación básica
+      if (!name || !msg || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        status.textContent = t.missing;
+        return;
+      }
+      if (!form.querySelector('input[name="consent"]').checked) {
+        status.textContent = t.consent;
+        return;
+      }
+
+      var topic = select.selectedOptions[0] ? select.selectedOptions[0].getAttribute('value') : '';
+
       if (CONFIG.formEndpoint) {
+        // Enviar vía API serverless
         status.textContent = t.sending;
-        fetch(CONFIG.formEndpoint, { method: 'POST', body: d, headers: { 'Accept': 'application/json' } })
-          .then(function (r) { if (!r.ok) throw new Error(); form.reset(); setLang(lang()); status.textContent = t.ok; })
-          .catch(function () { status.textContent = t.fail + CONFIG.email; });
+        submitBtn.disabled = true;
+
+        // Preparar datos como JSON
+        var payload = {
+          name: name,
+          email: email,
+          company: (d.get('company') || '').trim(),
+          topic: topic,
+          message: msg,
+          consent: true,
+          _gotcha: d.get('_gotcha') || '',
+          _timestamp: formLoadTime
+        };
+
+        fetch(CONFIG.formEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        })
+        .then(function (r) {
+          return r.json().then(function(data) {
+            if (!r.ok) throw new Error(data.error || 'Network error');
+            return data;
+          });
+        })
+        .then(function (data) {
+          if (data.ok) {
+            form.reset();
+            setLang(lang());
+            status.textContent = t.ok;
+            formLoadTime = Date.now(); // Reset timestamp
+          } else {
+            throw new Error(data.error);
+          }
+        })
+        .catch(function (err) {
+          console.error('Form error:', err);
+          status.textContent = t.fail + CONFIG.email;
+        })
+        .finally(function() {
+          submitBtn.disabled = false;
+        });
       } else {
+        // Fallback a mailto si JavaScript está desactivado o no hay endpoint
         var body = name + (d.get('company') ? ' (' + d.get('company') + ')' : '') + '\n' + email + '\n' + topic + '\n\n' + msg;
         window.location.href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent(t.subject + ': ' + topic) + '&body=' + encodeURIComponent(body);
         status.textContent = t.mailOpen;
