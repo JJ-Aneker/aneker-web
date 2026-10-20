@@ -10,11 +10,11 @@
 <meta property="og:description" content="Por qué casi todos los proyectos cuestan más de lo previsto y qué se puede hacer para que no pase.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://aneker.es/cuaderno/como-estimar-un-proyecto/">
-<meta property="og:image" content="https://aneker.es/img/cuaderno/estimar-iceberg.png">
+<meta property="og:image" content="https://aneker.es/img/cuaderno/fotos/estimar-principal.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Cómo estimar un proyecto sin que se te vaya de las manos">
 <meta name="twitter:description" content="Por qué casi todos los proyectos cuestan más de lo previsto y qué se puede hacer para que no pase.">
-<meta name="twitter:image" content="https://aneker.es/img/cuaderno/estimar-iceberg.png">
+<meta name="twitter:image" content="https://aneker.es/img/cuaderno/fotos/estimar-principal.webp">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314203A'/%3E%3Ctext x='32' y='47' text-anchor='middle' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' fill='%23E0563B' transform='translate(64 0) scale(-1 1)'%3Ek%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin">
@@ -24,7 +24,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Cómo estimar un proyecto sin que se te vaya de las manos",
-  "image": "https://aneker.es/img/cuaderno/estimar-iceberg.png",
+  "image": "https://aneker.es/img/cuaderno/fotos/estimar-principal.webp",
   "datePublished": "2026-10-20",
   "author": {
     "@type": "Person",
@@ -35,7 +35,7 @@
     "name": "Aneker",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://aneker.es/img/cuaderno/estimar-iceberg.png"
+      "url": "https://aneker.es/img/cuaderno/fotos/estimar-principal.webp"
     }
   }
 }
@@ -172,6 +172,46 @@
     margin: 0;
     max-width: 680px;
   }
+  
+  /* Fotos estilo revista */
+  .article-hero {
+    width: 100%;
+    max-width: 1160px;
+    margin: 48px auto;
+    padding: 0;
+  }
+  .article-hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .article-hero figcaption,
+  .article-photo figcaption {
+    margin-top: 8px;
+    padding: 0 40px;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: right;
+  }
+  .article-hero figcaption a,
+  .article-photo figcaption a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .article-hero figcaption a:hover,
+  .article-photo figcaption a:hover {
+    text-decoration: underline;
+  }
+  .article-photo {
+    width: calc(100% + 80px);
+    margin: 48px -40px;
+  }
+  .article-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
   .article-body {
     max-width: 680px;
     margin: 0 auto;
@@ -312,7 +352,47 @@
 
   @media (max-width: 640px) {
     .article-header { padding: 60px 40px 40px; }
-    .article-body { padding: 8px 40px 60px; }
+    
+  /* Fotos estilo revista */
+  .article-hero {
+    width: 100%;
+    max-width: 1160px;
+    margin: 48px auto;
+    padding: 0;
+  }
+  .article-hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .article-hero figcaption,
+  .article-photo figcaption {
+    margin-top: 8px;
+    padding: 0 40px;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: right;
+  }
+  .article-hero figcaption a,
+  .article-photo figcaption a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .article-hero figcaption a:hover,
+  .article-photo figcaption a:hover {
+    text-decoration: underline;
+  }
+  .article-photo {
+    width: calc(100% + 80px);
+    margin: 48px -40px;
+  }
+  .article-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .article-body { padding: 8px 40px 60px; }
     .article-body img { width: calc(100% + 80px); margin-left: -40px; margin-right: -40px; }
     .article-title { font-size: 32px; }
     .article-intro { font-size: 18px; }
@@ -351,6 +431,11 @@
     <h1 class="article-title">Cómo estimar un proyecto sin que se te vaya de las manos</h1>
     <p class="article-intro">Por qué casi todos los proyectos cuestan más de lo previsto y qué se puede hacer para que no pase.</p>
   </div>
+  <figure class="article-hero">
+    <img src="/img/cuaderno/fotos/estimar-principal.webp" alt="Planos arquitectónicos sobre mesa de trabajo con herramientas" width="2000" height="1125" fetchpriority="high">
+    <figcaption>Foto: <a href="https://unsplash.com/@mirandanef" target="_blank" rel="noopener">Pedro Miranda</a> / Unsplash</figcaption>
+  </figure>
+
 
   <article class="article-body">
     <p>Una estimación no es una adivinanza. Es una promesa con condiciones. El problema es que muchas veces se da la cifra y se olvidan las condiciones.</p>
@@ -372,7 +457,7 @@
 
     <p>Si la estimación solo cubre la primera línea de la lista, ya va tarde antes de empezar.</p>
 
-    <img src="/img/cuaderno/estimar-iceberg.png" alt="Lo que se estima y lo que se olvida" width="1200" height="675" loading="lazy">
+    <img src="/img/cuaderno/fotos/estimar-principal.webp" alt="Lo que se estima y lo que se olvida" width="1200" height="675" loading="lazy">
 
     <h2>Romperlo en piezas pequeñas</h2>
 
@@ -397,6 +482,11 @@
     <h2>Una fase cero para los proyectos con niebla</h2>
 
     <p>Cuando hay demasiadas incógnitas, lo mejor es no estimar el proyecto completo todavía. Se propone una fase corta y cerrada, de unos pocos días, para analizar el proceso, revisar los datos y probar lo más arriesgado. Al terminarla, el cliente tiene un plan y una estimación fiable, y nadie ha apostado a ciegas.</p>
+    <figure class="article-photo">
+      <img src="/img/cuaderno/fotos/estimar-secundaria.webp" alt="Pizarra con esquema de roadmap de producto" width="2000" height="1333" loading="lazy">
+      <figcaption>Foto: <a href="https://unsplash.com/@slidebean" target="_blank" rel="noopener">Slidebean</a> / Unsplash</figcaption>
+    </figure>
+
 
     <!-- [PENDIENTE JJ: un ejemplo tuyo. Un proyecto que se desvió por algo que nadie había contado al principio, o uno que salió bien gracias a una fase previa. Sin nombre de cliente.] -->
 
