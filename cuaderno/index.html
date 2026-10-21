@@ -123,81 +123,75 @@
   }
 
   .articles {
-    max-width: 1160px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 0 40px 80px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 48px 32px;
   }
   .article-item {
     text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease;
-    border-radius: 12px;
-    overflow: hidden;
-    background: var(--surface);
-    box-shadow: 0 1px 3px rgba(20, 32, 58, 0.08);
+    display: block;
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+    transition: transform 0.2s ease;
+  }
+  .article-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
   .article-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(20, 32, 58, 0.12);
+    transform: translateX(4px);
+  }
+  .article-item:hover h2 {
+    color: var(--red-text);
   }
   .article-thumb {
     width: 100%;
     aspect-ratio: 16 / 9;
     overflow: hidden;
     background: var(--tint);
+    border-radius: 8px;
+    margin-bottom: 16px;
   }
   .article-thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.5s ease;
   }
   .article-item:hover .article-thumb img {
-    transform: scale(1.05);
-  }
-  .article-content {
-    padding: 28px 24px 32px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    transform: scale(1.06);
   }
   .article-category {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--red-text);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+    display: block;
   }
   .article-item h2 {
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 700;
-    line-height: 1.3;
+    line-height: 1.25;
     letter-spacing: -0.02em;
     color: var(--ink);
     margin: 0 0 12px;
-  }
-  .article-item:hover h2 {
-    color: var(--red-text);
+    transition: color 0.2s;
   }
   .article-dek {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.5;
     color: var(--text);
-    margin: 0 0 auto;
+    margin: 0 0 14px;
   }
   .article-meta {
     font-size: 13px;
     color: var(--muted);
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
     display: flex;
-    gap: 16px;
+    gap: 8px;
   }
 
   footer {
@@ -221,16 +215,10 @@
   footer a { text-decoration: none; }
   footer a:hover { color: var(--red-text); }
 
-  @media (max-width: 768px) {
-    .articles {
-      grid-template-columns: 1fr;
-      gap: 32px;
-      padding: 0 20px 60px;
-    }
-  }
   @media (max-width: 640px) {
     .hero { padding: 60px 20px 40px; }
-    .article-content { padding: 24px 20px 28px; }
+    .articles { padding: 0 20px 60px; }
+    .article-item h2 { font-size: 22px; }
   }
 </style>
 </head>
@@ -264,15 +252,13 @@
       <div class="article-thumb">
         <img src="/img/cuaderno/ia-datos-basura.png" alt="La inteligencia artificial no arregla un proceso desordenado" width="800" height="450" loading="lazy">
       </div>
-      <div class="article-content">
-        <div class="article-category">Inteligencia artificial</div>
-        <h2>La inteligencia artificial no arregla un proceso desordenado</h2>
-        <p class="article-dek">Antes de automatizar conviene mirar el proceso desde el otro lado. Qué revisar primero y por qué.</p>
-        <div class="article-meta">
-          <span>20 oct 2026</span>
-          <span>•</span>
-          <span>7 min</span>
-        </div>
+      <div class="article-category">Inteligencia artificial</div>
+      <h2>La inteligencia artificial no arregla un proceso desordenado</h2>
+      <p class="article-dek">Antes de automatizar conviene mirar el proceso desde el otro lado. Qué revisar primero y por qué.</p>
+      <div class="article-meta">
+        <span>20 oct 2026</span>
+        <span>•</span>
+        <span>7 min</span>
       </div>
     </a>
 
@@ -280,15 +266,13 @@
       <div class="article-thumb">
         <img src="/img/cuaderno/fotos/facturas-thumb.webp" alt="Agentes que leen facturas" width="800" height="450" loading="lazy">
       </div>
-      <div class="article-content">
-        <div class="article-category">Inteligencia artificial</div>
-        <h2>Agentes que leen facturas: qué funciona y qué no</h2>
-        <p class="article-dek">Lo que de verdad se puede esperar de la IA en cuentas a pagar, sin humo.</p>
-        <div class="article-meta">
-          <span>20 oct 2026</span>
-          <span>•</span>
-          <span>5 min</span>
-        </div>
+      <div class="article-category">Inteligencia artificial</div>
+      <h2>Agentes que leen facturas: qué funciona y qué no</h2>
+      <p class="article-dek">Lo que de verdad se puede esperar de la IA en cuentas a pagar, sin humo.</p>
+      <div class="article-meta">
+        <span>20 oct 2026</span>
+        <span>•</span>
+        <span>5 min</span>
       </div>
     </a>
 
@@ -296,15 +280,13 @@
       <div class="article-thumb">
         <img src="/img/cuaderno/fotos/estimar-thumb.webp" alt="Cómo estimar un proyecto" width="800" height="450" loading="lazy">
       </div>
-      <div class="article-content">
-        <div class="article-category">Consultoría</div>
-        <h2>Cómo estimar un proyecto sin que se te vaya de las manos</h2>
-        <p class="article-dek">Por qué casi todos los proyectos cuestan más de lo previsto y qué se puede hacer para que no pase.</p>
-        <div class="article-meta">
-          <span>20 oct 2026</span>
-          <span>•</span>
-          <span>8 min</span>
-        </div>
+      <div class="article-category">Consultoría</div>
+      <h2>Cómo estimar un proyecto sin que se te vaya de las manos</h2>
+      <p class="article-dek">Por qué casi todos los proyectos cuestan más de lo previsto y qué se puede hacer para que no pase.</p>
+      <div class="article-meta">
+        <span>20 oct 2026</span>
+        <span>•</span>
+        <span>8 min</span>
       </div>
     </a>
 
@@ -312,15 +294,13 @@
       <div class="article-thumb">
         <img src="/img/cuaderno/fotos/archivo-thumb.webp" alt="Cinco señales de que tu archivo necesita una revisión" width="800" height="450" loading="lazy">
       </div>
-      <div class="article-content">
-        <div class="article-category">Gestión documental</div>
-        <h2>Cinco señales de que tu archivo necesita una revisión</h2>
-        <p class="article-dek">Cómo saber si el archivo de tu empresa trabaja para ti o en tu contra.</p>
-        <div class="article-meta">
-          <span>20 oct 2026</span>
-          <span>•</span>
-          <span>6 min</span>
-        </div>
+      <div class="article-category">Gestión documental</div>
+      <h2>Cinco señales de que tu archivo necesita una revisión</h2>
+      <p class="article-dek">Cómo saber si el archivo de tu empresa trabaja para ti o en tu contra.</p>
+      <div class="article-meta">
+        <span>20 oct 2026</span>
+        <span>•</span>
+        <span>6 min</span>
       </div>
     </a>
   </div>
