@@ -344,18 +344,19 @@
   .founder-quote p { margin: 0 0 12px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 500; font-size: clamp(22px, 2.2vw, 28px); line-height: 1.3; letter-spacing: -0.015em; color: var(--ink); }
   .founder-quote footer { border: 0; padding: 0; font-family: 'Schibsted Grotesk', sans-serif; font-size: 15px; color: var(--muted); }
   .founder-quote footer b { color: var(--ink); }
-  .roles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .roles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
   .roleitem {
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: 16px;
-    padding: 22px 22px 24px;
+    padding: 24px;
     transition: all .3s ease;
+    cursor: pointer;
   }
   .roleitem:hover {
     border-color: var(--red);
-    box-shadow: 0 4px 16px -8px rgba(194, 59, 34, 0.3);
-    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(194, 59, 34, 0.2);
+    transform: translateY(-4px);
   }
   .roleitem h4 { margin: 0 0 8px; font-family: 'Schibsted Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: var(--ink); line-height: 1.25; }
   .roleitem p { margin: 0; font-size: 16px; }
@@ -622,6 +623,11 @@
           <h4><span data-l="es">Firma digital y validez legal</span><span data-l="en">Digital signature and legal validity</span></h4>
           <p data-l="es">Certificados digitales, firma electrónica y validación de documentos.</p>
           <p data-l="en">Digital certificates, electronic signatures and document validation.</p>
+        </div>
+        <div class="roleitem">
+          <h4><span data-l="es">UX y diseño de sistemas</span><span data-l="en">UX and systems design</span></h4>
+          <p data-l="es">Experiencia de usuario, interfaces y arquitectura de información.</p>
+          <p data-l="en">User experience, interfaces and information architecture.</p>
         </div>
       </div>
     </div>
