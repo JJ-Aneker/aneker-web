@@ -212,13 +212,39 @@
   .team-text p { margin: 0 0 18px; }
   .agents-title { margin: 72px 0 8px; font-size: 21px; font-weight: 700; color: var(--ink); letter-spacing: -0.015em; }
   .agents-note { margin: 0 0 28px; max-width: 42em; color: var(--muted); font-size: 16px; }
-  .agents { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
-  .agents li { padding: 22px 24px 4px 0; }
-  .agents li + li { padding-left: 24px; border-left: 1px solid var(--line); }
-  .agent-name { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.04em; color: var(--ink); line-height: 1; }
-  .agent-name .m { color: var(--red); }
-  .agent-role { font-family: 'Schibsted Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: var(--ink); margin: 12px 0 4px; }
-  .agents p { margin: 0; font-size: 16px; color: var(--text); }
+  .agents { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+  .agent-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px 24px 24px;
+    text-align: center;
+    transition: all .3s ease;
+    cursor: pointer;
+  }
+  .agent-card:hover {
+    border-color: var(--red);
+    box-shadow: 0 6px 20px rgba(194, 59, 34, 0.2);
+    transform: translateY(-4px);
+  }
+  .agent-avatar {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 16px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    color: white;
+    letter-spacing: -0.02em;
+  }
+  .agent-name { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.03em; color: var(--ink); margin: 0 0 8px; }
+  .agent-role { font-family: 'Schibsted Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--red); margin: 0 0 12px; text-transform: uppercase; letter-spacing: 0.03em; }
+  .agent-card p { margin: 0; font-size: 15px; color: var(--text); line-height: 1.5; }
   .network { margin-top: 56px; padding: 28px 32px; background: var(--tint); border-radius: 18px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 32px; }
   .network h3 { margin: 0; font-size: 20px; font-weight: 700; color: var(--ink); }
   .network p { margin: 0; font-size: 17px; }
@@ -360,7 +386,6 @@
   }
   .roleitem h4 { margin: 0 0 8px; font-family: 'Schibsted Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: var(--ink); line-height: 1.25; }
   .roleitem p { margin: 0; font-size: 16px; }
-  .agent-role { font-weight: 500 !important; }
 
   body > footer { border-top: 1px solid var(--line); padding: 36px 0 48px; font-size: 14px; color: var(--muted); }
   body > footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px 32px; }
@@ -377,8 +402,6 @@
     .row .tag { display: block; font-family: 'Schibsted Grotesk', sans-serif; font-size: 13px; font-weight: 600; color: var(--muted); margin-top: 6px; }
     .row .after-wrap .tag { color: var(--ink); }
     .agents, .roles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .agents li:nth-child(3) { padding-left: 0; border-left: 0; }
-    .agents li:nth-child(n+3) { border-top: 1px solid var(--line); }
   }
   @media (max-width: 640px) {
     body { font-size: 15px; }
@@ -392,7 +415,6 @@
     .steps { grid-template-columns: minmax(0, 1fr); gap: 32px; }
     .step:not(:last-child)::after { display: none; }
     .agents, .roles { grid-template-columns: minmax(0, 1fr); }
-    .agents li, .agents li + li { padding: 20px 0 4px; border-left: 0; }
     .agents li + li { border-top: 1px solid var(--line); }
     .two { grid-template-columns: minmax(0, 1fr); }
     .hero-photo { aspect-ratio: 4 / 3; margin-top: 48px; }
@@ -568,32 +590,36 @@
       <h3 class="agents-title"><span data-l="es">Nuestro equipo digital</span><span data-l="en">Our digital team</span></h3>
       <p class="agents-note" data-l="es">Trabajamos junto a agentes de inteligencia artificial que hemos creado nosotros. Hacen el trabajo repetitivo en minutos; las personas revisan, deciden y responden. Sus nombres se leen igual al derecho y al revés.</p>
       <p class="agents-note" data-l="en">We work alongside artificial intelligence agents we built ourselves. They handle repetitive work in minutes; people review, decide and answer. Their names read the same forwards and backwards.</p>
-      <ul class="agents">
-        <li>
-          <div class="agent-name">Ana</div>
+      <div class="agents">
+        <div class="agent-card">
+          <div class="agent-avatar">A</div>
+          <h4 class="agent-name">Ana</h4>
           <div class="agent-role"><span data-l="es">Documentos · agente de IA</span><span data-l="en">Documents · AI agent</span></div>
           <p data-l="es">Lee, clasifica y extrae datos de facturas, contratos y expedientes.</p>
           <p data-l="en">Reads, classifies and extracts data from invoices, contracts and files.</p>
-        </li>
-        <li>
-          <div class="agent-name">Otto</div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-avatar">O</div>
+          <h4 class="agent-name">Otto</h4>
           <div class="agent-role"><span data-l="es">Estimaciones · agente de IA</span><span data-l="en">Estimates · AI agent</span></div>
           <p data-l="es">Prepara estimaciones de esfuerzo, planificaciones y borradores de propuesta.</p>
           <p data-l="en">Drafts effort estimates, project plans and proposal outlines.</p>
-        </li>
-        <li>
-          <div class="agent-name">Ava</div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-avatar">A</div>
+          <h4 class="agent-name">Ava</h4>
           <div class="agent-role"><span data-l="es">Análisis · agente de IA</span><span data-l="en">Analysis · AI agent</span></div>
           <p data-l="es">Analiza procesos y datos para encontrar cuellos de botella y oportunidades.</p>
           <p data-l="en">Analyses processes and data to find bottlenecks and opportunities.</p>
-        </li>
-        <li>
-          <div class="agent-name">Bob</div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-avatar">B</div>
+          <h4 class="agent-name">Bob</h4>
           <div class="agent-role"><span data-l="es">Asistencia · agente de IA</span><span data-l="en">Assistance · AI agent</span></div>
           <p data-l="es">Resuelve dudas técnicas y prepara documentación para los equipos.</p>
           <p data-l="en">Answers technical questions and prepares documentation for teams.</p>
-        </li>
-      </ul>
+        </div>
+      </div>
 
       <h3 class="agents-title"><span data-l="es">Nuestra red de especialistas</span><span data-l="en">Our specialist network</span></h3>
       <p class="agents-note" data-l="es">Cuando un proyecto lo necesita, sumamos especialistas de confianza. Tú sigues teniendo un único interlocutor.</p>
