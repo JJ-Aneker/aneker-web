@@ -2,6 +2,64 @@
 
 Esta guía describe el estilo y formato editorial para mantener consistencia en todos los artículos.
 
+## 🚀 Proceso rápido (copiar template)
+
+**La forma más fácil de crear un artículo nuevo:**
+
+1. **Copiar el template base:**
+   ```bash
+   cp cuaderno/agentes-que-leen-facturas/index.html cuaderno/[nuevo-slug]/index.html
+   ```
+   ⚠️ **Importante:** Usar siempre `agentes-que-leen-facturas/index.html` como base, NO los otros artículos.
+
+2. **Actualizar metadata** (buscar y reemplazar):
+   - Título del artículo
+   - URL canónica (`/cuaderno/[nuevo-slug]/`)
+   - Descripción/dek
+   - Imagen hero y thumbnail
+   - Fecha de publicación
+
+3. **Personalizar contenido:**
+   - Byline (fecha)
+   - Título H1 y dek (dos colores: primary + secondary)
+   - Imagen hero (cambiar src)
+   - Contenido del article-body
+   - Sidebar "Historias del día" (actualizar links)
+
+4. **Añadir al índice:**
+   - Editar `cuaderno/index.html`
+   - Añadir tarjeta del nuevo artículo en el grid
+
+## ⚠️ Reglas CSS críticas
+
+### Imágenes en article-body
+**DEBE incluirse siempre esta regla:**
+```css
+.article-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px 0;
+  border-radius: 8px;
+}
+```
+Sin `max-width: 100%`, las imágenes grandes rompen el layout de 2 columnas.
+
+### Layout de 2 columnas
+```css
+.article-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 40px 60px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 60px;
+  align-items: start;
+}
+```
+- Columna izquierda (contenido): `1fr` (flexible)
+- Columna derecha (sidebar): `340px` (fijo)
+
 ## Estructura de un artículo
 
 ### 1. Header del artículo
@@ -215,5 +273,28 @@ Actualizar en el `<head>`:
 
 ---
 
+## 🐛 Problemas comunes y soluciones
+
+### El sidebar se ve cortado o fuera de pantalla
+**Causa:** Imágenes sin `max-width: 100%` desbordan y empujan el sidebar.  
+**Solución:** Verificar que existe la regla CSS para `.article-body img` (ver arriba).
+
+### El layout no se ve de 2 columnas
+**Causa 1:** Falta el contenedor `.article-layout` o está mal cerrado.  
+**Solución:** Verificar que `<div class="article-layout">` contiene tanto `<article class="article-main">` como `<aside class="article-sidebar">`.
+
+**Causa 2:** CSS del grid no se aplicó correctamente.  
+**Solución:** Verificar que existe `.article-layout { display: grid; grid-template-columns: 1fr 340px; }`.
+
+### Cambios no se ven en Vercel
+**Causa:** Caché del navegador o de Vercel.  
+**Solución:** 
+- Recargar con Ctrl+F5 (fuerza recarga sin caché)
+- O abrir en ventana incógnito
+- Esperar 1-2 minutos después del push para que Vercel despliegue
+
+---
+
 **Última actualización:** Octubre 2026  
+**Template base:** `agentes-que-leen-facturas/index.html`  
 **Mantenido por:** Equipo Aneker
