@@ -536,55 +536,72 @@ footer a:hover { color: var(--red-text); }
 
       <!-- CONTENIDO -->
       <div class="article-body">
-        <p>Leer facturas es probablemente el uso más pedido de la inteligencia artificial en las empresas. Tiene sentido: es un trabajo repetitivo, con mucho volumen y en el que un error cuesta dinero. Pero entre la demo y el día a día hay distancia.</p>
+        <p>Una estimación no es una adivinanza. Es una promesa con condiciones. El problema es que muchas veces se da la cifra y se olvidan las condiciones.</p>
 
-        <h2>Lo que funciona bien</h2>
+        <p>Después de muchos años preparando estimaciones y ofertas, he visto que los proyectos rara vez se desvían por un gran error. Se desvían por muchas cosas pequeñas que nadie apuntó al principio.</p>
 
-        <ul>
-          <li><strong>Extraer los datos de cabecera.</strong> Proveedor, NIF, número de factura, fechas, base, impuestos y total. En facturas legibles, la IA actual lo hace muy bien, aunque cada proveedor use un diseño distinto.</li>
-          <li><strong>Clasificar lo que entra.</strong> Distinguir una factura de un abono, un albarán o una carta del banco que ha llegado al mismo buzón.</li>
-          <li><strong>Cruzar con lo que ya sabes.</strong> Comprobar que el proveedor existe, que el pedido está abierto y que los importes cuadran.</li>
-          <li><strong>Resumir y avisar.</strong> Explicar en una frase por qué una factura no cuadra, para que la persona que la revisa no tenga que empezar de cero.</li>
-        </ul>
+        <h2>El error de partida: estimar lo que se ve</h2>
 
-        <h2>Lo que todavía da problemas</h2>
+        <p>Cuando alguien pide un precio, suele describir la parte visible: «queremos que las facturas entren solas en el sistema». Esa parte se estima bien. Lo que se escapa es todo lo demás:</p>
 
         <ul>
-          <li><strong>Las líneas de detalle.</strong> Tablas largas, que saltan de página o mezclan conceptos, siguen siendo la parte más difícil.</li>
-          <li><strong>Los documentos en mal estado.</strong> Fotos torcidas, faxes antiguos o notas escritas a mano encima.</li>
-          <li><strong>Las excepciones que nadie ha escrito.</strong> Si la regla para aprobar una factura está en la cabeza de una persona, el agente no la puede aplicar.</li>
-          <li><strong>Los datos maestros sucios.</strong> Si el mismo proveedor aparece tres veces en el ERP con nombres distintos, la IA no sabrá cuál elegir. Aquí vuelve la idea de siempre: no quieres automatizar un caos.</li>
+          <li><strong>Entender el proceso real,</strong> que casi nunca es el que aparece en el papel.</li>
+          <li><strong>Migrar lo que ya existe.</strong> Los datos y documentos antiguos siempre llegan en peor estado de lo que se dijo.</li>
+          <li><strong>Integrar con otros sistemas.</strong> El ERP, el correo, la firma. Cada conexión tiene sus sorpresas.</li>
+          <li><strong>Probar con casos reales,</strong> no solo con los tres ejemplos limpios de la demo.</li>
+          <li><strong>Formar a las personas</strong> y acompañarlas las primeras semanas.</li>
+          <li><strong>Gestionar el proyecto:</strong> reuniones, cambios, documentación.</li>
         </ul>
 
-        <blockquote class="pull-quote">
-          "El objetivo no es que nadie toque una factura. Es que las personas solo toquen las que lo necesitan."
-        </blockquote>
+        <p>Si la estimación solo cubre la primera línea de la lista, ya va tarde antes de empezar.</p>
 
-        <h2>La clave: una persona en el circuito</h2>
+        <img src="/img/cuaderno/fotos/estimar-principal.webp" alt="Lo que se estima y lo que se olvida" width="1200" height="675" loading="lazy">
 
-        <p>El objetivo no es que nadie toque una factura. Es que las personas solo toquen las que lo necesitan. Un buen diseño hace que el agente diga lo seguro que está de cada dato: lo que tiene claro pasa directo, y lo dudoso va a una persona con el campo marcado.</p>
+        <h2>Romperlo en piezas pequeñas</h2>
 
-        <p>Así se gana tiempo desde el primer día sin jugarse la contabilidad, y cada corrección sirve para mejorar el sistema.</p>
+        <p>Un «proyecto de gestión documental» no se puede estimar. «Configurar la categoría de facturas con ocho campos y dos flujos de aprobación», sí. Cuanto más pequeña es la pieza, más fácil es acertar y más fácil es ver qué falta.</p>
 
-        <h2>Cómo empezar sin equivocarse</h2>
+        <p>Una regla práctica: si una pieza pasa de cinco días, probablemente esconde dos o tres piezas que todavía no hemos entendido.</p>
+
+        <h2>Dar rangos, no cifras</h2>
+
+        <p>Para cada pieza conviene pensar tres números: lo que cuesta si todo va bien, lo normal y lo que cuesta si aparecen los problemas de siempre. La distancia entre el primero y el último dice mucho: cuanto mayor es, menos sabemos todavía de esa parte.</p>
+
+        <p>Al cliente se le puede dar una cifra, pero detrás tiene que haber ese rango. Y cuando el rango es muy ancho, lo honesto es decirlo.</p>
+
+        <img src="/img/cuaderno/estimar-rangos.png" alt="Dar rangos, no cifras" width="1200" height="675" loading="lazy">
+
+        <h2>Escribir las suposiciones</h2>
+
+        <p>Toda estimación descansa sobre suposiciones: que los datos vendrán en un formato concreto, que habrá una persona del cliente disponible para validar, que el sistema de destino tiene una API. Escribirlas en la oferta no es protegerse. Es poner las cartas sobre la mesa.</p>
+
+        <p>Cuando una suposición no se cumple, no hay discusión: se revisa la estimación y ya está. Sin suposiciones escritas, cada cambio se convierte en una negociación.</p>
+
+        <h2>Una fase cero para los proyectos con niebla</h2>
+
+        <p>Cuando hay demasiadas incógnitas, lo mejor es no estimar el proyecto completo todavía. Se propone una fase corta y cerrada, de unos pocos días, para analizar el proceso, revisar los datos y probar lo más arriesgado. Al terminarla, el cliente tiene un plan y una estimación fiable, y nadie ha apostado a ciegas.</p>
+
+        <h2>Lo que no se negocia</h2>
+
+        <p>Hay una tentación habitual: recortar la estimación para que la oferta sea más atractiva. Normalmente se recorta lo invisible, como las pruebas, la formación o el margen para imprevistos. Y es justo lo que luego hace falta.</p>
+
+        <p>Una estimación honesta puede perder alguna oferta. Una estimación optimista suele perder al cliente.</p>
+
+        <h2>En resumen</h2>
 
         <ol>
-          <li><strong>Mide hoy.</strong> Cuántas facturas entran al mes, cuánto se tarda en cada una y cuántos errores hay. Sin esta foto, no podrás demostrar la mejora.</li>
-          <li><strong>Limpia los proveedores</strong> antes de conectar nada.</li>
-          <li><strong>Escribe las reglas de aprobación:</strong> quién aprueba qué y a partir de qué importe.</li>
-          <li><strong>Empieza por los proveedores que más facturas envían.</strong> Pocos proveedores suelen sumar buena parte del volumen.</li>
-          <li><strong>Decide qué pasa con las dudas</strong> antes de que lleguen.</li>
+          <li>Estima todo el trabajo, no solo la parte visible.</li>
+          <li>Rompe el proyecto en piezas pequeñas.</li>
+          <li>Piensa en rangos y di cuándo son anchos.</li>
+          <li>Escribe las suposiciones.</li>
+          <li>Si hay mucha niebla, propón primero una fase cero.</li>
         </ol>
 
-        <h2>En pocas palabras</h2>
-
-        <p>La IA ya lee facturas mejor de lo que muchos creen. Lo que falla casi nunca es la lectura: es lo que hay alrededor. Con datos maestros limpios, reglas escritas y una persona revisando lo dudoso, funciona. Sin eso, solo se equivoca más rápido.</p>
-
-        <p>Si estás pensando en automatizar tus facturas y quieres saber por dónde empezar, <a href="/#contacto" style="color: var(--red-text); text-decoration: underline;">cuéntanos tu caso</a>.</p>
+        <p>Si tienes un proyecto encima de la mesa y quieres una segunda opinión sobre la estimación, <a href="/#contacto" style="color: var(--red-text); text-decoration: underline;">cuéntanos tu caso</a>.</p>
       </div>
 
       <div class="contact-cta">
-        <p>¿Pensando en automatizar tus facturas?</p>
+        <p><strong>¿Pensando en un proyecto nuevo?</strong></p>
         <a href="/#contacto" class="btn">Cuéntanos tu caso</a>
       </div>
     </article>

@@ -536,55 +536,74 @@ footer a:hover { color: var(--red-text); }
 
       <!-- CONTENIDO -->
       <div class="article-body">
-        <p>Leer facturas es probablemente el uso más pedido de la inteligencia artificial en las empresas. Tiene sentido: es un trabajo repetitivo, con mucho volumen y en el que un error cuesta dinero. Pero entre la demo y el día a día hay distancia.</p>
+        <p>Casi todas las semanas alguien me cuenta el mismo plan: «Vamos a meter inteligencia artificial en facturas» o «Queremos un agente que gestione los contratos». La idea es buena. El problema es lo que hay debajo.</p>
 
-        <h2>Lo que funciona bien</h2>
+        <p>En muchas empresas, el proceso que se quiere automatizar no funciona bien ni siquiera a mano. Y si un proceso confuso se automatiza, el resultado es un proceso confuso que ahora va más rápido.</p>
 
-        <ul>
-          <li><strong>Extraer los datos de cabecera.</strong> Proveedor, NIF, número de factura, fechas, base, impuestos y total. En facturas legibles, la IA actual lo hace muy bien, aunque cada proveedor use un diseño distinto.</li>
-          <li><strong>Clasificar lo que entra.</strong> Distinguir una factura de un abono, un albarán o una carta del banco que ha llegado al mismo buzón.</li>
-          <li><strong>Cruzar con lo que ya sabes.</strong> Comprobar que el proveedor existe, que el pedido está abierto y que los importes cuadran.</li>
-          <li><strong>Resumir y avisar.</strong> Explicar en una frase por qué una factura no cuadra, para que la persona que la revisa no tenga que empezar de cero.</li>
-        </ul>
+        <p>Lo repito mucho en los proyectos: <strong>no quieres automatizar un caos.</strong></p>
 
-        <h2>Lo que todavía da problemas</h2>
+        <h2>La IA no ordena: multiplica</h2>
 
-        <ul>
-          <li><strong>Las líneas de detalle.</strong> Tablas largas, que saltan de página o mezclan conceptos, siguen siendo la parte más difícil.</li>
-          <li><strong>Los documentos en mal estado.</strong> Fotos torcidas, faxes antiguos o notas escritas a mano encima.</li>
-          <li><strong>Las excepciones que nadie ha escrito.</strong> Si la regla para aprobar una factura está en la cabeza de una persona, el agente no la puede aplicar.</li>
-          <li><strong>Los datos maestros sucios.</strong> Si el mismo proveedor aparece tres veces en el ERP con nombres distintos, la IA no sabrá cuál elegir. Aquí vuelve la idea de siempre: no quieres automatizar un caos.</li>
-        </ul>
+        <p>Un agente de IA hace lo que le enseñamos, solo que miles de veces y sin cansarse. Si el criterio para clasificar un documento cambia según quién lo mire, el agente aprenderá esa misma confusión.</p>
 
-        <blockquote class="pull-quote">
-          "El objetivo no es que nadie toque una factura. Es que las personas solo toquen las que lo necesitan."
-        </blockquote>
+        <p>Pasa igual con los datos. Si cada departamento llama de una forma distinta al mismo proveedor, la IA no sabrá cuál es el bueno. Si nadie sabe quién aprueba una factura de más de 5.000 euros, el agente tampoco lo sabrá.</p>
 
-        <h2>La clave: una persona en el circuito</h2>
+        <p>La tecnología acelera lo que encuentra. Por eso el orden importa: primero se entiende el proceso, después se arregla y solo entonces se automatiza.</p>
 
-        <p>El objetivo no es que nadie toque una factura. Es que las personas solo toquen las que lo necesitan. Un buen diseño hace que el agente diga lo seguro que está de cada dato: lo que tiene claro pasa directo, y lo dudoso va a una persona con el campo marcado.</p>
+        <img src="/img/cuaderno/ia-datos-basura.png" alt="Si entra basura, sale basura. Con IA, también." width="1200" height="675" loading="lazy">
 
-        <p>Así se gana tiempo desde el primer día sin jugarse la contabilidad, y cada corrección sirve para mejorar el sistema.</p>
+        <h2>Una historia que ya hemos vivido</h2>
 
-        <h2>Cómo empezar sin equivocarse</h2>
+        <p>Hace años, en la prehistoria de todo esto, un colega decía que las hojas de cálculo eran aplicaciones inteligentes: tan inteligentes como quien las usaba. Con ellas podías hacer la lista de la compra, guardar registros o montar un modelo económico complejo. La herramienta era la misma; lo que cambiaba era lo que sabías sacarle.</p>
+
+        <p>Después llegaron las herramientas de BI, y en buena parte seguimos ahí. Muchas veces se valoran porque pintan bonito: gráficos, colores, paneles que impresionan en una reunión. Pero el valor está en lo que hay detrás, en datos limpios y en indicadores bien definidos. Sin eso, el BI es el pinta y colorea de la empresa.</p>
+
+        <p>Con la inteligencia artificial estamos otra vez en esa conversación, con una diferencia importante: una hoja de cálculo mal planteada se nota a simple vista, pero una IA mal alimentada te devuelve un resultado impecable, bien redactado y convincente. El error sigue ahí; solo es más difícil de ver.</p>
+
+        <h2>Cinco señales de que un proceso no está listo</h2>
 
         <ol>
-          <li><strong>Mide hoy.</strong> Cuántas facturas entran al mes, cuánto se tarda en cada una y cuántos errores hay. Sin esta foto, no podrás demostrar la mejora.</li>
-          <li><strong>Limpia los proveedores</strong> antes de conectar nada.</li>
-          <li><strong>Escribe las reglas de aprobación:</strong> quién aprueba qué y a partir de qué importe.</li>
-          <li><strong>Empieza por los proveedores que más facturas envían.</strong> Pocos proveedores suelen sumar buena parte del volumen.</li>
-          <li><strong>Decide qué pasa con las dudas</strong> antes de que lleguen.</li>
+          <li><strong>Cada persona lo hace a su manera.</strong> Si preguntas a tres compañeros cómo se tramita un pedido y obtienes tres respuestas, todavía no hay un proceso que automatizar.</li>
+          <li><strong>Las excepciones son la norma.</strong> Cuando la mitad de los casos «va aparte», la regla real aún no está escrita.</li>
+          <li><strong>Los documentos viven en varios sitios.</strong> Papel, carpetas compartidas, el correo de cada uno. La IA no puede leer lo que no encuentra.</li>
+          <li><strong>Nadie sabe cuánto tarda.</strong> Sin una medida de partida no podrás demostrar que la automatización ha mejorado algo.</li>
+          <li><strong>El proceso depende de una persona.</strong> Si todo se para cuando esa persona se va de vacaciones, el conocimiento está en su cabeza y no en el proceso.</li>
         </ol>
 
-        <h2>En pocas palabras</h2>
+        <p>Detrás de casi todas estas señales hay una frase que se oye, medio en broma, en muchas reuniones: <em>«¿Por qué vamos a hacerlo bien, pudiendo hacerlo como siempre?»</em>. La ironía resume bien el problema. Lo habitual se defiende solo, aunque no funcione.</p>
 
-        <p>La IA ya lee facturas mejor de lo que muchos creen. Lo que falla casi nunca es la lectura: es lo que hay alrededor. Con datos maestros limpios, reglas escritas y una persona revisando lo dudoso, funciona. Sin eso, solo se equivoca más rápido.</p>
+        <h2>Qué revisar antes de automatizar</h2>
 
-        <p>Si estás pensando en automatizar tus facturas y quieres saber por dónde empezar, <a href="/#contacto" style="color: var(--red-text); text-decoration: underline;">cuéntanos tu caso</a>.</p>
+        <p>No hace falta un gran proyecto de consultoría para empezar. Con estas preguntas, respondidas por escrito, se gana mucho terreno:</p>
+
+        <ul class="checklist">
+          <li>¿Podemos dibujar el proceso en una hoja, de principio a fin, y las personas que lo hacen lo reconocen?</li>
+          <li>¿Sabemos qué documentos entran, dónde se guardan y quién los necesita después?</li>
+          <li>¿Están escritas las reglas de decisión, como quién aprueba qué y a partir de qué importe?</li>
+          <li>¿Tenemos una medida de hoy: tiempo por expediente, errores, documentos perdidos?</li>
+          <li>¿Hemos quitado los pasos que ya no aportan nada antes de automatizar los demás?</li>
+          <li>¿Sabemos qué hará una persona cuando la IA no esté segura?</li>
+        </ul>
+
+        <p>Si alguna respuesta es «no», ese es el primer trabajo. Y suele ser más barato y rápido que la automatización que vendrá después.</p>
+
+        <h2>Un caso que lo explica mejor</h2>
+
+        <p>Una empresa tenía miles de contratos repartidos en carpetas sin orden. Para encontrar uno había que rebuscar y fiarse del nombre que alguien le había puesto al archivo.</p>
+
+        <p>Antes de pensar en herramientas, decidimos qué datos eran clave de cada contrato. Unos sirven para <strong>localizarlo</strong> (expediente, cliente, fechas), otros para <strong>clasificarlo</strong> (tipo, firmantes, condiciones). Con ese criterio, cada contrato pasó a tener su ficha. La información dejó de ser un archivo muerto: ahora se encuentra en segundos. Lo importante no fue la tecnología, sino decidir antes qué había que saber de cada documento.</p>
+
+        <h2>El orden correcto</h2>
+
+        <p>Entender, ordenar y después automatizar. En ese orden, la inteligencia artificial cumple lo que promete: menos trabajo repetitivo, menos errores y más tiempo para decidir. En el orden contrario, solo acelera el problema.</p>
+
+        <p>En este punto suelo recurrir a la navaja de Ockham: de todas las respuestas posibles, la más sencilla suele ser la correcta. A veces el problema no necesita IA, sino una regla clara, un formulario bien hecho y un único sitio donde guardar los documentos. Cuando lo sencillo ya funciona, la IA tiene sobre qué construir.</p>
+
+        <p>Si estás pensando en aplicar IA a un proceso de tu empresa y quieres una segunda opinión antes de invertir, <a href="/#contacto" style="color: var(--red-text); text-decoration: underline;">cuéntanos tu caso</a>.</p>
       </div>
 
       <div class="contact-cta">
-        <p>¿Pensando en automatizar tus facturas?</p>
+        <p><strong>¿Pensando en aplicar IA a tus procesos?</strong></p>
         <a href="/#contacto" class="btn">Cuéntanos tu caso</a>
       </div>
     </article>

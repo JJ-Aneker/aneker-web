@@ -536,55 +536,57 @@ footer a:hover { color: var(--red-text); }
 
       <!-- CONTENIDO -->
       <div class="article-body">
-        <p>Leer facturas es probablemente el uso más pedido de la inteligencia artificial en las empresas. Tiene sentido: es un trabajo repetitivo, con mucho volumen y en el que un error cuesta dinero. Pero entre la demo y el día a día hay distancia.</p>
+        <p>Casi nadie decide un día que su archivo está mal. Se va estropeando poco a poco: una carpeta compartida por aquí, un disco externo por allá, los adjuntos del correo de cada uno. Hasta que un día alguien pide un contrato de hace cuatro años y media oficina se pone a buscar.</p>
 
-        <h2>Lo que funciona bien</h2>
+        <p>El archivo de una empresa no es un trastero. Es memoria: lo que se firmó, lo que se prometió, lo que se pagó. Cuando esa memoria no se encuentra, se toman decisiones a ciegas.</p>
 
-        <ul>
-          <li><strong>Extraer los datos de cabecera.</strong> Proveedor, NIF, número de factura, fechas, base, impuestos y total. En facturas legibles, la IA actual lo hace muy bien, aunque cada proveedor use un diseño distinto.</li>
-          <li><strong>Clasificar lo que entra.</strong> Distinguir una factura de un abono, un albarán o una carta del banco que ha llegado al mismo buzón.</li>
-          <li><strong>Cruzar con lo que ya sabes.</strong> Comprobar que el proveedor existe, que el pedido está abierto y que los importes cuadran.</li>
-          <li><strong>Resumir y avisar.</strong> Explicar en una frase por qué una factura no cuadra, para que la persona que la revisa no tenga que empezar de cero.</li>
-        </ul>
+        <img src="/img/cuaderno/archivo-antes-despues.png" alt="Del saco al archivo: el mismo contrato, antes y después" width="1200" height="675" loading="lazy">
 
-        <h2>Lo que todavía da problemas</h2>
+        <p>Estas son las cinco señales que más veo cuando entro en una empresa.</p>
 
-        <ul>
-          <li><strong>Las líneas de detalle.</strong> Tablas largas, que saltan de página o mezclan conceptos, siguen siendo la parte más difícil.</li>
-          <li><strong>Los documentos en mal estado.</strong> Fotos torcidas, faxes antiguos o notas escritas a mano encima.</li>
-          <li><strong>Las excepciones que nadie ha escrito.</strong> Si la regla para aprobar una factura está en la cabeza de una persona, el agente no la puede aplicar.</li>
-          <li><strong>Los datos maestros sucios.</strong> Si el mismo proveedor aparece tres veces en el ERP con nombres distintos, la IA no sabrá cuál elegir. Aquí vuelve la idea de siempre: no quieres automatizar un caos.</li>
-        </ul>
+        <h2>1. Nadie sabe cuál es la versión buena</h2>
 
-        <blockquote class="pull-quote">
-          "El objetivo no es que nadie toque una factura. Es que las personas solo toquen las que lo necesitan."
-        </blockquote>
+        <p>Contrato_final.docx, Contrato_final_v2.docx, Contrato_final_DEFINITIVO.docx. Si para saber qué documento vale hay que preguntar a quien lo hizo, el archivo no está guardando documentos: está guardando dudas.</p>
 
-        <h2>La clave: una persona en el circuito</h2>
+        <h2>2. Se busca por el nombre del fichero</h2>
 
-        <p>El objetivo no es que nadie toque una factura. Es que las personas solo toquen las que lo necesitan. Un buen diseño hace que el agente diga lo seguro que está de cada dato: lo que tiene claro pasa directo, y lo dudoso va a una persona con el campo marcado.</p>
+        <p>Si la única forma de encontrar algo es acertar con el nombre que alguien le puso, dependes de la memoria y del estilo de cada persona. Un buen archivo permite buscar por lo que el documento <em>es</em>: el cliente, el expediente, la fecha, el tipo.</p>
 
-        <p>Así se gana tiempo desde el primer día sin jugarse la contabilidad, y cada corrección sirve para mejorar el sistema.</p>
+        <h2>3. El mismo documento está en tres sitios</h2>
 
-        <h2>Cómo empezar sin equivocarse</h2>
+        <p>Una copia en la carpeta del departamento, otra en el correo y otra impresa en un archivador. Cuando una cambia, las demás se quedan atrás. Y nadie sabe ya cuál es el original.</p>
+
+        <h2>4. No sabes qué puedes borrar</h2>
+
+        <p>Hay documentos que hay que guardar durante años por ley y otros que conviene eliminar cuanto antes, como muchos datos personales. Si no hay reglas de conservación, se guarda todo «por si acaso», y ese «por si acaso» también es un riesgo.</p>
+
+        <h2>5. Los permisos son «todo o nada»</h2>
+
+        <p>O todo el mundo ve todo, o solo una persona tiene acceso y se convierte en el cuello de botella. Las dos situaciones son malas: la primera por seguridad y la segunda porque todo se para cuando esa persona no está.</p>
+
+        <h2>Qué hacer si te reconoces en tres o más</h2>
+
+        <p>La buena noticia es que no hace falta digitalizarlo todo de golpe. Lo que funciona es ir por partes:</p>
 
         <ol>
-          <li><strong>Mide hoy.</strong> Cuántas facturas entran al mes, cuánto se tarda en cada una y cuántos errores hay. Sin esta foto, no podrás demostrar la mejora.</li>
-          <li><strong>Limpia los proveedores</strong> antes de conectar nada.</li>
-          <li><strong>Escribe las reglas de aprobación:</strong> quién aprueba qué y a partir de qué importe.</li>
-          <li><strong>Empieza por los proveedores que más facturas envían.</strong> Pocos proveedores suelen sumar buena parte del volumen.</li>
-          <li><strong>Decide qué pasa con las dudas</strong> antes de que lleguen.</li>
+          <li><strong>Haz inventario.</strong> Dónde están hoy los documentos y quién los usa. Sin juzgar, solo apuntando.</li>
+          <li><strong>Decide qué datos importan.</strong> Para cada tipo de documento, qué hay que saber para encontrarlo (cliente, expediente, fecha) y para clasificarlo (tipo, estado, quién lo firma).</li>
+          <li><strong>Elige un único sitio.</strong> Un repositorio donde cada documento vive una sola vez y el resto de sistemas lo enlazan.</li>
+          <li><strong>Escribe las reglas.</strong> Quién ve qué, cuánto tiempo se guarda cada cosa y quién aprueba.</li>
+          <li><strong>Empieza por lo que más duele.</strong> Un tipo de documento, un departamento. Cuando funciona, se extiende.</li>
         </ol>
 
-        <h2>En pocas palabras</h2>
+        <img src="/img/cuaderno/archivo-pasos.png" alt="Ordenar el archivo, paso a paso" width="1200" height="675" loading="lazy">
 
-        <p>La IA ya lee facturas mejor de lo que muchos creen. Lo que falla casi nunca es la lectura: es lo que hay alrededor. Con datos maestros limpios, reglas escritas y una persona revisando lo dudoso, funciona. Sin eso, solo se equivoca más rápido.</p>
+        <h2>Antes de pensar en la herramienta</h2>
 
-        <p>Si estás pensando en automatizar tus facturas y quieres saber por dónde empezar, <a href="/#contacto" style="color: var(--red-text); text-decoration: underline;">cuéntanos tu caso</a>.</p>
+        <p>El error más común es empezar por elegir el software. La herramienta importa, pero solo funciona si antes se ha decidido qué se guarda, cómo se identifica y quién lo usa. Un buen gestor documental con un criterio malo es un desorden más caro.</p>
+
+        <p>Si quieres que revisemos juntos cómo está tu archivo, <a href="/#contacto" style="color: var(--red-text); text-decoration: underline;">cuéntanos tu caso</a>.</p>
       </div>
 
       <div class="contact-cta">
-        <p>¿Pensando en automatizar tus facturas?</p>
+        <p><strong>¿Pensando en ordenar tu archivo?</strong></p>
         <a href="/#contacto" class="btn">Cuéntanos tu caso</a>
       </div>
     </article>
