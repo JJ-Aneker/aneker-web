@@ -2,7 +2,7 @@
 title: "Agentes que leen facturas: qué funciona y qué no"
 description: "Lo que de verdad se puede esperar de la IA en cuentas a pagar, sin humo."
 date: 2026-10-20
-author: "JJ Requena"
+author: "Aneker"
 slug: agentes-que-leen-facturas
 category: "Inteligencia artificial"
 readingTime: 5
@@ -38,7 +38,6 @@ Así se gana tiempo desde el primer día sin jugarse la contabilidad, y cada cor
 
 ![Una persona en el circuito](/img/cuaderno/facturas-flujo.png)
 
-**[PENDIENTE JJ: un ejemplo real, aunque sea aproximado. Qué porcentaje de facturas pasó sin tocar, cuánto tiempo se ahorró o qué problema apareció que nadie esperaba. Sin nombre de cliente.]**
 
 ## Cómo empezar sin equivocarse
 
@@ -54,4 +53,4 @@ La IA ya lee facturas mejor de lo que muchos creen. Lo que falla casi nunca es l
 
 Si estás pensando en automatizar tus facturas y quieres saber por dónde empezar, [cuéntanos tu caso](/#contacto).
 
-*JJ Requena, fundador de Aneker*
+*Aneker*

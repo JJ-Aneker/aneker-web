@@ -2,7 +2,7 @@
 title: "La inteligencia artificial no arregla un proceso desordenado"
 description: "Antes de automatizar conviene mirar el proceso desde el otro lado. Qué revisar primero y por qué."
 date: 2026-10-20
-author: "JJ Requena"
+author: "Aneker"
 slug: ia-no-arregla-un-proceso-desordenado
 image: /img/cuaderno/ia-datos-basura.png
 imageAlt: "Si entra basura, sale basura. Con IA, también."
@@ -74,4 +74,4 @@ En este punto suelo recurrir a la navaja de Ockham: de todas las respuestas posi
 
 Si estás pensando en aplicar IA a un proceso de tu empresa y quieres una segunda opinión antes de invertir, [cuéntanos tu caso](/#contacto).
 
-*JJ Requena, fundador de Aneker*
+*Aneker*

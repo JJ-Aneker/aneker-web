@@ -2,7 +2,7 @@
 title: "Cinco señales de que tu archivo necesita una revisión"
 description: "Cómo saber si el archivo de tu empresa trabaja para ti o en tu contra."
 date: 2026-10-20
-author: "JJ Requena"
+author: "Aneker"
 slug: cinco-senales-archivo-necesita-revision
 category: "Gestión documental"
 readingTime: 6
@@ -52,7 +52,6 @@ La buena noticia es que no hace falta digitalizarlo todo de golpe. Lo que funcio
 
 ![Ordenar el archivo, paso a paso](/img/cuaderno/archivo-pasos.png)
 
-**[PENDIENTE JJ: una anécdota corta de tu experiencia. Por ejemplo, una búsqueda que costó horas o días, o un documento que no apareció cuando hacía falta. Sin nombre de cliente.]**
 
 ## Antes de pensar en la herramienta
 
@@ -60,4 +59,4 @@ El error más común es empezar por elegir el software. La herramienta importa, 
 
 Si quieres que revisemos juntos cómo está tu archivo, [cuéntanos tu caso](/#contacto).
 
-*JJ Requena, fundador de Aneker*
+*Aneker*

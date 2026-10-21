@@ -2,7 +2,7 @@
 title: "Cómo estimar un proyecto sin que se te vaya de las manos"
 description: "Por qué casi todos los proyectos cuestan más de lo previsto y qué se puede hacer para que no pase."
 date: 2026-10-20
-author: "JJ Requena"
+author: "Aneker"
 slug: como-estimar-un-proyecto
 category: "Consultoría"
 readingTime: 8
@@ -55,7 +55,6 @@ Cuando una suposición no se cumple, no hay discusión: se revisa la estimación
 
 Cuando hay demasiadas incógnitas, lo mejor es no estimar el proyecto completo todavía. Se propone una fase corta y cerrada, de unos pocos días, para analizar el proceso, revisar los datos y probar lo más arriesgado. Al terminarla, el cliente tiene un plan y una estimación fiable, y nadie ha apostado a ciegas.
 
-**[PENDIENTE JJ: un ejemplo tuyo. Un proyecto que se desvió por algo que nadie había contado al principio, o uno que salió bien gracias a una fase previa. Sin nombre de cliente.]**
 
 ## Lo que no se negocia
 
@@ -73,4 +72,4 @@ Una estimación honesta puede perder alguna oferta. Una estimación optimista su
 
 Si tienes un proyecto encima de la mesa y quieres una segunda opinión sobre la estimación, [cuéntanos tu caso](/#contacto).
 
-*JJ Requena, fundador de Aneker*
+*Aneker*

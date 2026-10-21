@@ -11,8 +11,8 @@ Esta carpeta contiene las imágenes de la web. Si falta alguna, la web muestra u
   - Peso máximo: 300 KB
 
 ### Equipo
-- **jj-requena.jpg** (vertical 4:5, retrato)
-  - Descripción: Retrato natural, mejor en un entorno de trabajo real
+- **equipo.jpg** (vertical 4:5, retrato)
+  - Descripción: Foto del equipo, retrato natural en entorno de trabajo
   - Formato: JPG
   - Peso máximo: 300 KB
 
