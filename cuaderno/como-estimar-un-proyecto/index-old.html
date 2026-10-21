@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="es" data-lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo estimar un proyecto sin que se te vaya de las manos · Aneker</title>
+<meta name="description" content="Por qué casi todos los proyectos cuestan más de lo previsto y qué se puede hacer para que no pase.">
+<link rel="canonical" href="https://aneker.es/cuaderno/como-estimar-un-proyecto/">
+<meta property="og:title" content="Cómo estimar un proyecto sin que se te vaya de las manos">
+<meta property="og:description" content="Por qué casi todos los proyectos cuestan más de lo previsto y qué se puede hacer para que no pase.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aneker.es/cuaderno/como-estimar-un-proyecto/">
+<meta property="og:image" content="https://aneker.es/img/cuaderno/estimar-tabla.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cómo estimar un proyecto sin que se te vaya de las manos">
+<meta name="twitter:description" content="Por qué casi todos los proyectos cuestan más de lo previsto y qué se puede hacer para que no pase.">
+<meta name="twitter:image" content="https://aneker.es/img/cuaderno/fotos/estimar-principal.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314203A'/%3E%3Ctext x='32' y='47' text-anchor='middle' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' fill='%23E0563B' transform='translate(64 0) scale(-1 1)'%3Ek%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cómo estimar un proyecto sin que se te vaya de las manos",
+  "image": "https://aneker.es/img/cuaderno/fotos/estimar-principal.webp",
+  "datePublished": "2026-10-20",
+  "author": {
+    "@type": "Organization",
+    "name": "Aneker"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Aneker",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aneker.es/img/cuaderno/fotos/estimar-principal.webp"
+    }
+  }
+}
+</script>
+<script>
+  (function () {
+    var root = document.documentElement, theme = null, lang = null;
+    try { theme = localStorage.getItem('ak-theme'); lang = localStorage.getItem('ak-lang'); } catch (e) {}
+    if (theme === 'light' || theme === 'dark') root.setAttribute('data-theme', theme);
+    if (lang !== 'es' && lang !== 'en') {
+      lang = (navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+    }
+    root.setAttribute('data-lang', lang);
+    root.setAttribute('lang', lang);
+  })();
+</script>
+<style>
+  :root,
+  :root[data-theme="light"] {
+    --page: #F4F5F7;
+    --surface: #FFFFFF;
+    --ink: #14203A;
+    --text: #2E3A50;
+    --muted: #5E6B80;
+    --line: #D9DEE6;
+    --red: #C23B22;
+    --red-text: #B0301B;
+    --tint: #E9EDF3;
+    --grid: rgba(20, 32, 58, 0.03);
+    color-scheme: light;
+  }
+  :root[data-theme="dark"] {
+    --page: #0E1524;
+    --surface: #152036;
+    --ink: #EEF1F6;
+    --text: #CDD5E1;
+    --muted: #97A3B6;
+    --line: #26324A;
+    --red: #C23B22;
+    --red-text: #F06A4F;
+    --tint: #1A2740;
+    --grid: rgba(238, 241, 246, 0.02);
+    color-scheme: dark;
+  }
+  html[data-lang="es"] [data-l="en"],
+  html[data-lang="en"] [data-l="es"] { display: none !important; }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--page);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: -1px -1px;
+    color: var(--text);
+    font-family: 'Schibsted Grotesk', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color .3s ease, color .3s ease;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+
+  /* Marca */
+  .mark { font-family: 'Archivo', 'Schibsted Grotesk', sans-serif; font-weight: 800; letter-spacing: -0.05em; color: var(--ink); }
+  .mark .k { display: inline-block; color: var(--red); transform: scaleX(-1); margin: 0 -0.03em 0 0.07em; }
+
+  /* Navegación */
+  .bar {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--page) 92%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 68px; max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+  .bar .mark { font-size: 22px; text-decoration: none; }
+  .tools { display: flex; align-items: center; gap: 6px; }
+  .lang { display: flex; gap: 2px; }
+  .lang button, .theme {
+    border: 0; background: transparent; color: var(--muted);
+    font-size: 14px; font-weight: 500; min-width: 36px; min-height: 36px; border-radius: 8px; cursor: pointer;
+  }
+  .lang button[aria-pressed="true"] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+  .lang button:hover, .theme:hover { color: var(--ink); background: var(--tint); }
+  .theme { display: inline-flex; align-items: center; justify-content: center; }
+  .theme svg { width: 18px; height: 18px; }
+  :root[data-theme="light"] .i-sun, :root[data-theme="dark"] .i-moon { display: none; }
+
+  /* Artículo */
+  .article-header {
+    padding: 80px 40px 60px;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 32px;
+  }
+  .back-link:hover { color: var(--red-text); }
+  .article-meta {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .article-meta span { margin-right: 16px; }
+  .article-title {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin: 0 0 20px;
+    max-width: 680px;
+  }
+  .article-intro {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .article-body {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 12px 40px 80px;
+  }
+  .article-body p {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0 0 24px;
+  }
+  .article-body h2 {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 56px 0 24px;
+  }
+  .article-body strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .article-body em {
+    font-style: italic;
+  }
+  .article-body img {
+    width: calc(100% + 80px);
+    max-width: 800px;
+    height: auto;
+    margin: 48px -40px;
+    display: block;
+  }
+  .article-body ol,
+  .article-body ul {
+    font-family: 'Source Serif 4', serif;
+    font-size: 19px;
+    line-height: 1.7;
+    margin: 0 0 28px;
+    padding-left: 28px;
+  }
+  .article-body li {
+    margin-bottom: 12px;
+  }
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 28px 0;
+  }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .checklist li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--line);
+    border-radius: 4px;
+    margin-top: 4px;
+  }
+  .article-footer {
+    border-top: 1px solid var(--line);
+    padding-top: 40px;
+    margin-top: 60px;
+  }
+  .author-sign {
+    font-family: 'Source Serif 4', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--muted);
+    margin: 0 0 40px;
+  }
+  .contact-cta {
+    background: var(--tint);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+  }
+  .contact-cta p {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: 17px;
+    margin: 0 0 20px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 0 26px;
+    border-radius: 999px;
+    background: var(--red);
+    color: #FFFFFF;
+    border: 0;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .3s ease;
+    box-shadow: 0 4px 14px -4px rgba(194, 59, 34, 0.3);
+  }
+  .btn:hover {
+    background: #A52D18;
+    box-shadow: 0 6px 20px -4px rgba(194, 59, 34, 0.5);
+    transform: translateY(-2px);
+  }
+  .lang-notice {
+    max-width: 680px;
+    margin: 80px auto;
+    padding: 0 40px;
+    text-align: center;
+    color: var(--muted);
+  }
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 36px 0 48px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  footer .wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px 32px;
+  }
+  footer .mark { font-size: 20px; }
+  footer nav { display: flex; gap: 20px; font-size: 14px; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--red-text); }
+
+  @media (max-width: 640px) {
+    .article-header { padding: 60px 40px 40px; }
+    
+  /* Fotos estilo revista */
+  .article-hero {
+    width: 100%;
+    max-width: 1160px;
+    margin: 48px auto;
+    padding: 0;
+  }
+  .article-hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .article-hero figcaption,
+  .article-photo figcaption {
+    margin-top: 8px;
+    padding: 0 40px;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: right;
+  }
+  .article-hero figcaption a,
+  .article-photo figcaption a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .article-hero figcaption a:hover,
+  .article-photo figcaption a:hover {
+    text-decoration: underline;
+  }
+  .article-photo {
+    width: calc(100% + 80px);
+    margin: 48px -40px;
+  }
+  .article-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .article-body { padding: 8px 40px 60px; }
+    .article-body img { width: calc(100% + 80px); margin-left: -40px; margin-right: -40px; }
+    .article-title { font-size: 32px; }
+    .article-intro { font-size: 18px; }
+    .article-body p { font-size: 18px; }
+    .article-body h2 { font-size: 24px; margin-top: 40px; }
+    .contact-cta { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="/" aria-label="Aneker, inicio">ane<span class="k">k</span>er</a>
+    <div class="tools">
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" class="theme" id="themeBtn" aria-label="Cambiar a modo oscuro">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main data-l="es">
+  <div class="article-header">
+    <a href="/cuaderno/" class="back-link">← Volver al cuaderno</a>
+    <div class="article-meta">
+      <span>20 de octubre de 2026</span>
+      <span>Aneker</span>
+      <span>8 min de lectura</span>
+    </div>
+    <h1 class="article-title">Cómo estimar un proyecto sin que se te vaya de las manos</h1>
+    <p class="article-intro">Por qué casi todos los proyectos cuestan más de lo previsto y qué se puede hacer para que no pase.</p>
+  </div>
+
+  <article class="article-body">
+    <p>Una estimación no es una adivinanza. Es una promesa con condiciones. El problema es que muchas veces se da la cifra y se olvidan las condiciones.</p>
+
+    <p>Después de muchos años preparando estimaciones y ofertas, he visto que los proyectos rara vez se desvían por un gran error. Se desvían por muchas cosas pequeñas que nadie apuntó al principio.</p>
+
+    <h2>El error de partida: estimar lo que se ve</h2>
+
+    <p>Cuando alguien pide un precio, suele describir la parte visible: «queremos que las facturas entren solas en el sistema». Esa parte se estima bien. Lo que se escapa es todo lo demás:</p>
+
+    <ul>
+      <li><strong>Entender el proceso real,</strong> que casi nunca es el que aparece en el papel.</li>
+      <li><strong>Migrar lo que ya existe.</strong> Los datos y documentos antiguos siempre llegan en peor estado de lo que se dijo.</li>
+      <li><strong>Integrar con otros sistemas.</strong> El ERP, el correo, la firma. Cada conexión tiene sus sorpresas.</li>
+      <li><strong>Probar con casos reales,</strong> no solo con los tres ejemplos limpios de la demo.</li>
+      <li><strong>Formar a las personas</strong> y acompañarlas las primeras semanas.</li>
+      <li><strong>Gestionar el proyecto:</strong> reuniones, cambios, documentación.</li>
+    </ul>
+
+    <p>Si la estimación solo cubre la primera línea de la lista, ya va tarde antes de empezar.</p>
+
+    <img src="/img/cuaderno/fotos/estimar-principal.webp" alt="Lo que se estima y lo que se olvida" width="1200" height="675" loading="lazy">
+
+    <h2>Romperlo en piezas pequeñas</h2>
+
+    <p>Un «proyecto de gestión documental» no se puede estimar. «Configurar la categoría de facturas con ocho campos y dos flujos de aprobación», sí. Cuanto más pequeña es la pieza, más fácil es acertar y más fácil es ver qué falta.</p>
+
+    <p>Una regla práctica: si una pieza pasa de cinco días, probablemente esconde dos o tres piezas que todavía no hemos entendido.</p>
+
+    <h2>Dar rangos, no cifras</h2>
+
+    <p>Para cada pieza conviene pensar tres números: lo que cuesta si todo va bien, lo normal y lo que cuesta si aparecen los problemas de siempre. La distancia entre el primero y el último dice mucho: cuanto mayor es, menos sabemos todavía de esa parte.</p>
+
+    <p>Al cliente se le puede dar una cifra, pero detrás tiene que haber ese rango. Y cuando el rango es muy ancho, lo honesto es decirlo.</p>
+
+    <img src="/img/cuaderno/estimar-rangos.png" alt="Dar rangos, no cifras" width="1200" height="675" loading="lazy">
+
+    <h2>Escribir las suposiciones</h2>
+
+    <p>Toda estimación descansa sobre suposiciones: que los datos vendrán en un formato concreto, que habrá una persona del cliente disponible para validar, que el sistema de destino tiene una API. Escribirlas en la oferta no es protegerse. Es poner las cartas sobre la mesa.</p>
+
+    <p>Cuando una suposición no se cumple, no hay discusión: se revisa la estimación y ya está. Sin suposiciones escritas, cada cambio se convierte en una negociación.</p>
+
+    <h2>Una fase cero para los proyectos con niebla</h2>
+
+    <p>Cuando hay demasiadas incógnitas, lo mejor es no estimar el proyecto completo todavía. Se propone una fase corta y cerrada, de unos pocos días, para analizar el proceso, revisar los datos y probar lo más arriesgado. Al terminarla, el cliente tiene un plan y una estimación fiable, y nadie ha apostado a ciegas.</p>
+
+    <h2>Lo que no se negocia</h2>
+
+    <p>Hay una tentación habitual: recortar la estimación para que la oferta sea más atractiva. Normalmente se recorta lo invisible, como las pruebas, la formación o el margen para imprevistos. Y es justo lo que luego hace falta.</p>
+
+    <p>Una estimación honesta puede perder alguna oferta. Una estimación optimista suele perder al cliente.</p>
+
+    <h2>En resumen</h2>
+
+    <ol>
+      <li>Estima todo el trabajo, no solo la parte visible.</li>
+      <li>Rompe el proyecto en piezas pequeñas.</li>
+      <li>Piensa en rangos y di cuándo son anchos.</li>
+      <li>Escribe las suposiciones.</li>
+      <li>Si hay mucha niebla, propón primero una fase cero.</li>
+    </ol>
+
+    <p>Si tienes un proyecto encima de la mesa y quieres una segunda opinión sobre la estimación, <a href="/#contacto" style="color: var(--red-text); text-decoration: underline;">cuéntanos tu caso</a>.</p>
+
+    <div class="article-footer">
+      <p class="author-sign">Aneker</p>
+
+      <div class="contact-cta">
+        <p><strong>¿Pensando en un proyecto nuevo?</strong></p>
+        <a href="/#contacto" class="btn">Cuéntanos tu caso</a>
+      </div>
+    </div>
+  </article>
+</main>
+
+<div class="lang-notice" data-l="en">
+  <p>This article is only available in Spanish.</p>
+  <p><a href="/cuaderno/" style="color: var(--red-text); text-decoration: underline;">← Back to notebook</a></p>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span class="mark">ane<span class="k">k</span>er</span>
+    <span>© <span id="year">2026</span> Aneker. Otra mirada. Mejores resultados.</span>
+    <nav aria-label="Legal">
+      <a href="/aviso-legal.html">Aviso legal</a>
+      <a href="/privacidad.html">Privacidad</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var themeBtn = document.getElementById('themeBtn');
+    var langBtns = document.querySelectorAll('[data-set-lang]');
+
+    function lang() { return root.getAttribute('data-lang') === 'en' ? 'en' : 'es'; }
+    function save(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+
+    function updateThemeLabel() {
+      var isDark = root.getAttribute('data-theme') === 'dark';
+      themeBtn.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+    }
+
+    themeBtn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      updateThemeLabel();
+      save('ak-theme', next);
+    });
+
+    function setLang(l) {
+      root.setAttribute('data-lang', l);
+      root.setAttribute('lang', l);
+      langBtns.forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === l ? 'true' : 'false');
+      });
+      save('ak-lang', l);
+    }
+
+    langBtns.forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
+    });
+
+    setLang(lang());
+    updateThemeLabel();
+    document.getElementById('year').textContent = new Date().getFullYear();
+  })();
+</script>
+
+</body>
+</html>
