@@ -1,4 +1,17 @@
+# Robots.txt para aneker.es
+
 User-agent: *
 Allow: /
 
+# Permitir crawling de todas las páginas públicas
+Allow: /cuaderno/
+Allow: /img/
+
+# Bloquear archivos temporales y de desarrollo
+Disallow: /*-old.html
+Disallow: /*-wix-base.html
+Disallow: /*-template.html
+Disallow: /cuaderno/_fuentes/
+
+# Sitemap
 Sitemap: https://aneker.es/sitemap.xml
