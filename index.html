@@ -173,6 +173,80 @@
   .screen svg { display: block; width: 100%; height: auto; }
   .s-bg { fill: var(--page); } .s-ink { fill: var(--ink); } .s-line { fill: var(--line); } .s-red { fill: var(--red); } .s-tint { fill: var(--tint); }
 
+  .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: 40px; }
+  .tool-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px -8px rgba(20, 32, 58, .15);
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 320ms ease, border-color 200ms ease;
+  }
+  .tool-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--red);
+    opacity: 0;
+    transition: opacity 280ms ease;
+  }
+  .tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px -8px rgba(20, 32, 58, .28);
+    border-color: color-mix(in srgb, var(--red) 20%, var(--line));
+  }
+  .tool-card:hover::before { opacity: 1; }
+  .tool-card-img {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  .tool-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .tool-card:hover .tool-card-img img { transform: scale(1.03); }
+  .tool-card-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(20, 32, 58, 0.03) 100%);
+    pointer-events: none;
+  }
+  .tool-card-body { padding: 32px; }
+  .tool-card h3 {
+    margin: 0 0 12px;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    transition: color 200ms ease;
+  }
+  .tool-card:hover h3 { color: var(--red-text); }
+  .tool-card p { margin: 0 0 20px; font-size: 16px; }
+  .tool-card ul {
+    margin: 0 0 24px;
+    padding-left: 20px;
+    font-size: 15.5px;
+    line-height: 1.6;
+  }
+  .tool-card li { margin-bottom: 6px; }
+  .tool-card .link { font-size: 15px; }
+  .tool-card small {
+    display: block;
+    margin-top: 8px;
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+
   /* Contacto */
   .contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; }
   .mail { display: inline-block; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: clamp(20px, 2.3vw, 30px); letter-spacing: -0.025em; color: var(--ink); text-decoration: none; border-bottom: 3px solid var(--red); line-height: 1.15; margin: 8px 0 20px; padding: 8px 0 4px; word-break: break-word; }
@@ -336,21 +410,68 @@
 
   /* ---------- Cuaderno ---------- */
   .notes { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 56px; }
-  .lead .photo { aspect-ratio: 16 / 10; margin-bottom: 24px; border: 1px solid var(--line); background: var(--surface); }
-  .lead .photo img { position: absolute; inset: 0; object-position: 50% 0; }
+  .lead .photo {
+    aspect-ratio: 16 / 10;
+    margin-bottom: 24px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    overflow: hidden;
+    transition: border-color 280ms ease;
+  }
+  .lead:hover .photo { border-color: color-mix(in srgb, var(--red) 30%, var(--line)); }
+  .lead .photo img {
+    position: absolute;
+    inset: 0;
+    object-position: 50% 0;
+    transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1), filter 280ms ease;
+  }
+  .lead:hover .photo img { transform: scale(1.02); }
   .lead h3 { margin: 0 0 14px; font-size: clamp(28px, 3.2vw, 38px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 800; color: var(--ink); }
-  .lead h3 a, .mini h4 a { text-decoration: none; }
-  .lead h3 a:hover, .mini h4 a:hover { text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+  .lead h3 a, .mini h4 a { text-decoration: none; transition: color 200ms ease; }
+  .lead h3 a:hover { color: var(--red-text); }
+  .mini h4 a:hover { color: var(--red-text); }
   .meta { font-family: 'Schibsted Grotesk', sans-serif; font-size: 14px; color: var(--muted); margin: 0 0 12px; }
   .lead p.dek { margin: 0; font-size: clamp(17px, 1.7vw, 19px); line-height: 1.5; }
-  .mini { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 20px; padding: 0 0 28px; margin-bottom: 28px; border-bottom: 1px solid var(--line); }
+  .mini {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 20px;
+    padding: 0 0 28px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+    transition: border-color 240ms ease;
+  }
+  .mini:hover { border-color: color-mix(in srgb, var(--red) 20%, var(--line)); }
   .mini:last-child { border-bottom: 0; }
-  .mini .photo { aspect-ratio: 1; border-radius: 12px; }
+  .mini .photo {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    transition: border-color 280ms ease, transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .mini:hover .photo {
+    border-color: color-mix(in srgb, var(--red) 25%, var(--line));
+    transform: translateY(-2px);
+  }
+  .mini .photo img { transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1); }
+  .mini:hover .photo img { transform: scale(1.05); }
   .mini .photo .hint { font-size: 12px; padding: 8px; }
   .mini h4 { margin: 0 0 8px; font-size: clamp(20px, 2vw, 22px); line-height: 1.25; font-weight: 800; color: var(--ink); letter-spacing: -0.015em; }
   .more { margin: 48px 0 0; }
-  .more a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--ink); text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 6px; }
-  .more a:hover { color: var(--red-text); }
+  .more a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--red);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+    transition: color 200ms ease, text-decoration-color 200ms ease;
+  }
+  .more a:hover { color: var(--red-text); text-decoration-color: var(--red-text); }
 
   /* ---------- Equipo con foto ---------- */
   .founder { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
@@ -436,6 +557,9 @@
     .face > div { transition: opacity 200ms ease !important; transition-delay: 0s !important; }
     .face .side-a, .face .side-b, .flipped .face .side-a, .flipped .face .side-b { transform: none !important; }
     .hero .mark .k { animation: none; transform: scaleX(-1); }
+    .tool-card:hover, .mini:hover .photo { transform: none; }
+    .tool-card-img img, .lead .photo img, .mini .photo img { transition: none; }
+    .lead .photo, .mini .photo, .mini { transition: border-color 200ms ease; }
     .lens .dot { transition: none; }
   }
 </style>
@@ -683,54 +807,58 @@
         <p data-l="es">Desarrollamos aplicaciones para acelerar los proyectos y reducir errores. Algunas están disponibles para clientes y colaboradores.</p>
         <p data-l="en">We build applications that speed up projects and reduce errors. Some of them are available to clients and partners.</p>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: 40px;">
-        <div style="background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px -8px rgba(20, 32, 58, .15);">
-          <img src="img/TheJTool.png" alt="TheJTool" style="width: 100%; height: 200px; object-fit: cover; display: block;">
-          <div style="padding: 32px;">
-            <h3 style="margin: 0 0 12px; font-size: 28px; font-weight: 800; letter-spacing: -0.025em; color: var(--ink);">TheJTool</h3>
-            <p style="margin: 0 0 20px; font-size: 16px;" data-l="es">Suite de utilidades para proyectos de gestión documental, todo en el navegador.</p>
-            <p style="margin: 0 0 20px; font-size: 16px;" data-l="en">Suite of utilities for document management projects, all in the browser.</p>
-            <ul style="margin: 0 0 24px; padding-left: 20px; font-size: 15.5px; line-height: 1.6;" data-l="es">
-              <li style="margin-bottom: 6px;">Constructor de estructuras documentales</li>
-              <li style="margin-bottom: 6px;">Diseño de formularios electrónicos</li>
-              <li style="margin-bottom: 6px;">Estimaciones y planificación Gantt</li>
-              <li style="margin-bottom: 6px;">Asistentes con IA</li>
-            </ul>
-            <ul style="margin: 0 0 24px; padding-left: 20px; font-size: 15.5px; line-height: 1.6;" data-l="en">
-              <li style="margin-bottom: 6px;">Document structure builder</li>
-              <li style="margin-bottom: 6px;">Electronic form designer</li>
-              <li style="margin-bottom: 6px;">Effort estimates and Gantt planning</li>
-              <li style="margin-bottom: 6px;">AI assistants</li>
-            </ul>
-            <a class="link" href="https://app.aneker.es" target="_blank" rel="noopener" style="font-size: 15px;"><span data-l="es">Acceder a TheJTool</span><span data-l="en">Sign in to TheJTool</span><span class="sr" data-l="es"> (se abre en una pestaña nueva)</span><span class="sr" data-l="en"> (opens in a new tab)</span></a>
-            <small style="display: block; margin-top: 8px; font-size: 13.5px; color: var(--muted);" data-l="es">Acceso para usuarios autorizados.</small>
-            <small style="display: block; margin-top: 8px; font-size: 13.5px; color: var(--muted);" data-l="en">For authorised users.</small>
+      <div class="tool-grid">
+        <article class="tool-card">
+          <div class="tool-card-img">
+            <img src="img/TheJTool.png" alt="TheJTool">
           </div>
-        </div>
+          <div class="tool-card-body">
+            <h3>TheJTool</h3>
+            <p data-l="es">Suite de utilidades para proyectos de gestión documental, todo en el navegador.</p>
+            <p data-l="en">Suite of utilities for document management projects, all in the browser.</p>
+            <ul data-l="es">
+              <li>Constructor de estructuras documentales</li>
+              <li>Diseño de formularios electrónicos</li>
+              <li>Estimaciones y planificación Gantt</li>
+              <li>Asistentes con IA</li>
+            </ul>
+            <ul data-l="en">
+              <li>Document structure builder</li>
+              <li>Electronic form designer</li>
+              <li>Effort estimates and Gantt planning</li>
+              <li>AI assistants</li>
+            </ul>
+            <a class="link" href="https://app.aneker.es" target="_blank" rel="noopener"><span data-l="es">Acceder a TheJTool</span><span data-l="en">Sign in to TheJTool</span><span class="sr" data-l="es"> (se abre en una pestaña nueva)</span><span class="sr" data-l="en"> (opens in a new tab)</span></a>
+            <small data-l="es">Acceso para usuarios autorizados.</small>
+            <small data-l="en">For authorised users.</small>
+          </div>
+        </article>
 
-        <div style="background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px -8px rgba(20, 32, 58, .15);">
-          <img src="img/biome.jpg" alt="BIOME" style="width: 100%; height: 200px; object-fit: cover; display: block;">
-          <div style="padding: 32px;">
-            <h3 style="margin: 0 0 12px; font-size: 28px; font-weight: 800; letter-spacing: -0.025em; color: var(--ink);">BIOME</h3>
-            <p style="margin: 0 0 20px; font-size: 16px;" data-l="es">Plataforma de huella ambiental. Convierte facturas y consumos en métricas trazables de CO₂e.</p>
-            <p style="margin: 0 0 20px; font-size: 16px;" data-l="en">Environmental footprint platform. Converts invoices and consumption into traceable CO₂e metrics.</p>
-            <ul style="margin: 0 0 24px; padding-left: 20px; font-size: 15.5px; line-height: 1.6;" data-l="es">
-              <li style="margin-bottom: 6px;">Lectura automática con IA</li>
-              <li style="margin-bottom: 6px;">Cálculo de huella de carbono</li>
-              <li style="margin-bottom: 6px;">Trazabilidad completa</li>
-              <li style="margin-bottom: 6px;">Seguimiento de biodiversidad</li>
-            </ul>
-            <ul style="margin: 0 0 24px; padding-left: 20px; font-size: 15.5px; line-height: 1.6;" data-l="en">
-              <li style="margin-bottom: 6px;">Automated AI reading</li>
-              <li style="margin-bottom: 6px;">Carbon footprint calculation</li>
-              <li style="margin-bottom: 6px;">Full traceability</li>
-              <li style="margin-bottom: 6px;">Biodiversity tracking</li>
-            </ul>
-            <a class="link" href="https://biome.aneker.es" target="_blank" rel="noopener" style="font-size: 15px;"><span data-l="es">Acceder a BIOME</span><span data-l="en">Sign in to BIOME</span><span class="sr" data-l="es"> (se abre en una pestaña nueva)</span><span class="sr" data-l="en"> (opens in a new tab)</span></a>
-            <small style="display: block; margin-top: 8px; font-size: 13.5px; color: var(--muted);" data-l="es">Disponible para clientes y colaboradores.</small>
-            <small style="display: block; margin-top: 8px; font-size: 13.5px; color: var(--muted);" data-l="en">Available to clients and partners.</small>
+        <article class="tool-card">
+          <div class="tool-card-img">
+            <img src="img/biome.jpg" alt="BIOME">
           </div>
-        </div>
+          <div class="tool-card-body">
+            <h3>BIOME</h3>
+            <p data-l="es">Plataforma de huella ambiental. Convierte facturas y consumos en métricas trazables de CO₂e.</p>
+            <p data-l="en">Environmental footprint platform. Converts invoices and consumption into traceable CO₂e metrics.</p>
+            <ul data-l="es">
+              <li>Lectura automática con IA</li>
+              <li>Cálculo de huella de carbono</li>
+              <li>Trazabilidad completa</li>
+              <li>Seguimiento de biodiversidad</li>
+            </ul>
+            <ul data-l="en">
+              <li>Automated AI reading</li>
+              <li>Carbon footprint calculation</li>
+              <li>Full traceability</li>
+              <li>Biodiversity tracking</li>
+            </ul>
+            <a class="link" href="https://biome.aneker.es" target="_blank" rel="noopener"><span data-l="es">Acceder a BIOME</span><span data-l="en">Sign in to BIOME</span><span class="sr" data-l="es"> (se abre en una pestaña nueva)</span><span class="sr" data-l="en"> (opens in a new tab)</span></a>
+            <small data-l="es">Disponible para clientes y colaboradores.</small>
+            <small data-l="en">Available to clients and partners.</small>
+          </div>
+        </article>
       </div>
     </div>
   </section>
