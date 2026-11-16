@@ -95,14 +95,25 @@
   .bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 68px; }
   .bar .mark { font-size: 22px; text-decoration: none; opacity: 0; transition: opacity .3s ease; }
   .bar.scrolled .mark { opacity: 1; }
-  nav { display: flex; gap: 28px; font-size: 15px; }
-  nav a { text-decoration: none; color: var(--muted); }
-  nav a:hover { color: var(--ink); }
-  .tools { display: flex; align-items: center; gap: 6px; }
+  .menu { display: flex; align-items: center; gap: 24px; }
+  nav { display: flex; align-items: center; gap: 24px; font-size: 15px; }
+  nav a { text-decoration: none; color: var(--muted); padding: 10px 0; }
+  nav a:hover, nav a[aria-current="true"] { color: var(--ink); }
+  nav a[aria-current="true"] { text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 8px; }
+  .nav-cta { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: var(--red); color: #FFFFFF; font-size: 15px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+  .nav-cta:hover { background: #A52D18; }
+  .nav-cta:focus-visible { outline-color: var(--ink); }
+  .menu-btn { display: none; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .menu-btn svg { width: 18px; height: 18px; }
+  .menu-btn .i-x { display: none; }
+  .menu-btn[aria-expanded="true"] .i-x { display: block; }
+  .menu-btn[aria-expanded="true"] .i-bars { display: none; }
+  .bar-right { display: flex; align-items: center; gap: 10px; }
+  .tools { display: flex; align-items: center; gap: 2px; }
   .lang { display: flex; gap: 2px; }
   .lang button, .theme {
     border: 0; background: transparent; color: var(--muted);
-    font-size: 14px; font-weight: 500; min-width: 36px; min-height: 36px; border-radius: 8px; cursor: pointer;
+    font-size: 14px; font-weight: 500; min-width: 44px; min-height: 44px; border-radius: 8px; cursor: pointer;
   }
   .lang button[aria-pressed="true"] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 5px; }
   .lang button:hover, .theme:hover { color: var(--ink); background: var(--tint); }
@@ -150,9 +161,11 @@
     min-height: 50px; padding: 0 26px; border-radius: 999px;
     background: var(--red); color: #FFFFFF; border: 0;
     font-size: 16px; font-weight: 600; text-decoration: none; cursor: pointer;
-    transition: all .3s ease;
+    transition: background-color .2s ease, box-shadow .2s ease, transform .2s ease;
     box-shadow: 0 4px 14px -4px rgba(194, 59, 34, 0.3);
   }
+  .btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .btn[disabled] { opacity: .65; cursor: progress; transform: none; }
   .btn:hover {
     background: #A52D18;
     box-shadow: 0 6px 20px -4px rgba(194, 59, 34, 0.5);
@@ -210,44 +223,18 @@
   /* Equipo */
   .team-text { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; }
   .team-text p { margin: 0 0 18px; }
-  .agents-title { margin: 72px 0 8px; font-size: 21px; font-weight: 700; color: var(--ink); letter-spacing: -0.015em; }
-  .agents-note { margin: 0 0 28px; max-width: 42em; color: var(--muted); font-size: 16px; }
-  .agents { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
-  .agent-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 28px 24px 24px;
-    text-align: center;
-    transition: all .3s ease;
-    cursor: pointer;
-  }
-  .agent-card:hover {
-    border-color: var(--red);
-    box-shadow: 0 6px 20px rgba(194, 59, 34, 0.2);
-    transform: translateY(-4px);
-  }
-  .agent-avatar {
-    width: 56px;
-    height: 56px;
-    margin: 0 auto 16px;
-    background: var(--red);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Archivo', sans-serif;
-    font-weight: 800;
-    font-size: 24px;
-    color: white;
-    letter-spacing: -0.02em;
-  }
-  .agent-name { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.03em; color: var(--ink); margin: 0 0 8px; }
-  .agent-role { font-family: 'Schibsted Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--red); margin: 0 0 12px; text-transform: uppercase; letter-spacing: 0.03em; }
-  .agent-card p { margin: 0; font-size: 15px; color: var(--text); line-height: 1.5; }
-  .network { margin-top: 56px; padding: 28px 32px; background: var(--tint); border-radius: 18px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 32px; }
-  .network h3 { margin: 0; font-size: 20px; font-weight: 700; color: var(--ink); }
-  .network p { margin: 0; font-size: 17px; }
+  .support { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; margin-top: 72px; padding-top: 48px; border-top: 1px solid var(--line); }
+  .support h3 { margin: 0 0 8px; font-size: 21px; font-weight: 700; color: var(--ink); letter-spacing: -0.015em; }
+  .support .agents-note { margin: 0 0 20px; font-size: 16px; color: var(--muted); }
+  .agents, .roles { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .agents li, .roles li { display: grid; grid-template-columns: 10.5rem minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .agents b { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 19px; letter-spacing: -0.03em; color: var(--ink); }
+  .agents b::first-letter { color: var(--red-text); }
+  .agents b small { display: block; margin-top: 2px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; letter-spacing: 0; color: var(--muted); }
+  .agents b small::first-letter { color: inherit; }
+  .agents span.what, .roles span.what { font-size: 15.5px; line-height: 1.5; }
+  .roles li { grid-template-columns: 11.5rem minmax(0, 1fr); }
+  .roles b { font-weight: 700; font-size: 15.5px; color: var(--ink); line-height: 1.35; }
 
   /* Herramientas */
   .tool { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center; }
@@ -255,7 +242,7 @@
   .tool p { margin: 0 0 18px; }
   .tool ul { margin: 0 0 28px; padding-left: 20px; }
   .tool li { margin-bottom: 6px; font-size: 17px; }
-  .tool small { display: block; margin-top: 12px; font-family: 'Schibsted Grotesk', sans-serif; font-size: 14px; color: var(--muted); }
+  .tool small { display: block; margin-top: 4px; font-family: 'Schibsted Grotesk', sans-serif; font-size: 14px; color: var(--muted); }
   .screen {
     background: var(--surface);
     border: 1px solid var(--line);
@@ -265,12 +252,6 @@
       0 30px 60px -30px rgba(20, 32, 58, .35),
       0 0 0 1px rgba(194, 59, 34, 0.1);
     transition: transform .3s ease, box-shadow .3s ease;
-  }
-  .screen:hover {
-    transform: translateY(-4px);
-    box-shadow:
-      0 40px 80px -30px rgba(20, 32, 58, .45),
-      0 0 0 1px rgba(194, 59, 34, 0.2);
   }
   .screen svg { display: block; width: 100%; height: auto; }
   .s-bg { fill: var(--page); } .s-ink { fill: var(--ink); } .s-line { fill: var(--line); } .s-red { fill: var(--red); } .s-tint { fill: var(--tint); }
@@ -292,23 +273,34 @@
     box-shadow: 0 4px 20px -8px rgba(20, 32, 58, .15);
   }
   .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
-  label { display: grid; gap: 6px; font-size: 14px; font-weight: 500; color: var(--ink); }
+  .field { display: grid; gap: 6px; align-content: start; }
+  label { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .opt { font-weight: 400; color: var(--muted); }
   input, select, textarea {
     font-size: 16px; color: var(--ink); background: var(--page);
     border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; width: 100%;
   }
   textarea { min-height: 130px; resize: vertical; line-height: 1.5; }
-  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--ink); }
-  .consent { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; color: var(--text); line-height: 1.5; cursor: pointer; }
-  .consent input { width: 18px; height: 18px; margin: 2px 0 0; padding: 0; flex-shrink: 0; accent-color: var(--red); }
-  .consent a { color: var(--ink); }
-  .status { font-family: 'Schibsted Grotesk', sans-serif; font-size: 15px; color: var(--red-text); min-height: 22px; margin: 0; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; border-color: var(--ink); }
+  [aria-invalid="true"] { border-color: var(--red-text); box-shadow: inset 0 0 0 1px var(--red-text); }
+  .err { margin: 0; font-size: 14px; line-height: 1.4; color: var(--red-text); }
+  .err:empty { display: none; }
+  .counter { margin: 0; font-size: 13px; color: var(--muted); text-align: right; }
+  .consent { display: flex; gap: 12px; align-items: flex-start; font-weight: 400; color: var(--text); line-height: 1.5; cursor: pointer; padding: 4px 0; }
+  .consent input { width: 22px; height: 22px; margin: 1px 0 0; padding: 0; flex-shrink: 0; accent-color: var(--red); cursor: pointer; }
+  .consent a { color: var(--ink); text-underline-offset: 3px; display: inline-block; padding: 2px 0; }
+  .status { font-family: 'Schibsted Grotesk', sans-serif; font-size: 15px; line-height: 1.5; margin: 0; padding: 14px 16px; border-radius: 12px; }
+  .status:empty { display: none; }
+  .status.is-info { background: var(--tint); color: var(--ink); }
+  .status.is-ok { background: var(--tint); color: var(--ink); box-shadow: inset 3px 0 0 #2F7A4F; }
+  .status.is-err { background: color-mix(in srgb, var(--red) 10%, var(--surface)); color: var(--ink); box-shadow: inset 3px 0 0 var(--red); }
+  .status a { color: var(--red-text); font-weight: 600; }
   .hp { position: absolute; left: -9999px; }
 
 
   /* ---------- Imágenes ---------- */
   .photo { position: relative; margin: 0; overflow: hidden; border-radius: 18px; background: var(--tint); }
-  .photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .photo img, .photo picture { display: block; width: 100%; height: 100%; object-fit: cover; }
   .photo.empty img { display: none; }
   .photo .hint { display: none; position: absolute; inset: 0; align-items: center; justify-content: center; text-align: center; padding: 24px;
     font-family: 'Schibsted Grotesk', sans-serif; font-size: 15px; color: var(--muted); }
@@ -355,6 +347,9 @@
   .mini .photo { aspect-ratio: 1; border-radius: 12px; }
   .mini .photo .hint { font-size: 12px; padding: 8px; }
   .mini h4 { margin: 0 0 6px; font-size: 19px; line-height: 1.25; font-weight: 700; color: var(--ink); }
+  .more { margin: 40px 0 0; }
+  .more a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--ink); text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+  .more a:hover { color: var(--red-text); }
 
   /* ---------- Equipo con foto ---------- */
   .founder { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
@@ -370,38 +365,36 @@
   .founder-quote p { margin: 0 0 12px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 500; font-size: clamp(22px, 2.2vw, 28px); line-height: 1.3; letter-spacing: -0.015em; color: var(--ink); }
   .founder-quote footer { border: 0; padding: 0; font-family: 'Schibsted Grotesk', sans-serif; font-size: 15px; color: var(--muted); }
   .founder-quote footer b { color: var(--ink); }
-  .roles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-  .roleitem {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 24px;
-    transition: all .3s ease;
-    cursor: pointer;
-  }
-  .roleitem:hover {
-    border-color: var(--red);
-    box-shadow: 0 6px 20px rgba(194, 59, 34, 0.2);
-    transform: translateY(-4px);
-  }
-  .roleitem h4 { margin: 0 0 8px; font-family: 'Schibsted Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: var(--ink); line-height: 1.25; }
-  .roleitem p { margin: 0; font-size: 16px; }
 
   body > footer { border-top: 1px solid var(--line); padding: 36px 0 48px; font-size: 14px; color: var(--muted); }
   body > footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px 32px; }
   body > footer .mark { font-size: 20px; }
-  body > footer nav { font-size: 14px; gap: 20px; }
+  body > footer nav { font-size: 14px; gap: 8px 20px; flex-wrap: wrap; }
+  body > footer nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0; }
 
   @media (max-width: 960px) {
-    nav.main { display: none; }
-    .hero-grid, .head, .team-text, .tool, .contact, .network, .notes, .founder { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+    .menu-btn { display: inline-flex; }
+    .menu {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; align-items: stretch; gap: 0;
+      background: var(--surface); border-bottom: 1px solid var(--line);
+      box-shadow: 0 18px 30px -18px rgba(20, 32, 58, .35);
+      padding: 8px 20px 20px;
+    }
+    .bar.open .menu { display: flex; }
+    .menu nav { flex-direction: column; align-items: stretch; gap: 0; font-size: 18px; }
+    .menu nav a { display: flex; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--line); color: var(--ink); }
+    .menu nav a[aria-current="true"] { text-decoration: none; box-shadow: inset 3px 0 0 var(--red); padding-left: 12px; }
+    .menu .nav-cta { justify-content: center; min-height: 52px; margin-top: 16px; font-size: 17px; }
+    .menu .tools { justify-content: space-between; margin-top: 12px; }
+    .hero-grid, .head, .team-text, .tool, .contact, .notes, .founder, .support { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+    .support { gap: 48px; }
     .srow { grid-template-columns: minmax(0, 1fr); gap: 10px; }
     .founder .photo { max-width: 360px; }
     .ledger-head { display: none; }
     .row { grid-template-columns: minmax(0, 1fr); gap: 10px; }
     .row .tag { display: block; font-family: 'Schibsted Grotesk', sans-serif; font-size: 13px; font-weight: 600; color: var(--muted); margin-top: 6px; }
     .row .after-wrap .tag { color: var(--ink); }
-    .agents, .roles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 640px) {
     body { font-size: 15px; }
@@ -414,13 +407,12 @@
     .head { margin-bottom: 36px; }
     .steps { grid-template-columns: minmax(0, 1fr); gap: 32px; }
     .step:not(:last-child)::after { display: none; }
-    .agents, .roles { grid-template-columns: minmax(0, 1fr); }
-    .agents li + li { border-top: 1px solid var(--line); }
+    .agents li, .roles li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .hero-canvas { display: none; }
     .two { grid-template-columns: minmax(0, 1fr); }
     .hero-photo { aspect-ratio: 4 / 3; margin-top: 48px; }
     .mini { grid-template-columns: 88px minmax(0, 1fr); }
     form { padding: 20px; }
-    .network { padding: 22px; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -428,7 +420,43 @@
     .reveal::after { display: none; }
     .face > div { transition: none; }
     .lens .dot { transition: none; }
-    body, .bar, .bar .mark { transition: none; }
+    body, .bar, .bar .mark, .btn { transition: none; }
+    .btn:hover { transform: none; }
+  }
+
+  /* ---------- Movimiento: curvas propias, respuesta al pulsar, hover solo con ratón ---------- */
+  :root { --ease-out: cubic-bezier(0.23, 1, 0.32, 1); --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1); }
+  .btn, .nav-cta, .lens, .menu-btn, .lang button, .theme {
+    transition: transform 160ms var(--ease-out), background-color 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 200ms ease;
+  }
+  nav a, .link, .other a, .more a, .mail, .lead h3 a, .mini h4 a, footer a {
+    transition: color 150ms ease, text-decoration-color 150ms ease;
+  }
+  input, select, textarea { transition: border-color 150ms ease, box-shadow 150ms ease; }
+  .btn:hover { transform: none; }
+  @media (hover: hover) and (pointer: fine) {
+    .btn:hover { transform: translateY(-1px); }
+  }
+  .btn:active, .nav-cta:active, .lens:active, .menu-btn:active, .lang button:active, .theme:active { transform: scale(0.97); }
+  .btn[disabled] { transform: none; }
+  .bar .mark { transition: opacity 200ms var(--ease-out); }
+  .hero .mark .k { animation: flip 900ms var(--ease-in-out) 400ms both; }
+  .lens .dot { transition: transform 500ms var(--ease-in-out); }
+  .face > div { transition: transform 500ms var(--ease-in-out), opacity 300ms ease; transition-delay: calc(var(--i) * 50ms); }
+  .reveal::after { transition: transform 900ms var(--ease-out); }
+  @keyframes rise { from { opacity: 0; transform: translateY(-6px); } }
+  @keyframes fadeOnly { from { opacity: 0; } }
+  .err:not(:empty), .status:not(:empty) { animation: rise 200ms var(--ease-out); }
+  @media (max-width: 960px) {
+    .bar.open .menu { animation: rise 180ms var(--ease-out); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn:hover, .btn:active, .nav-cta:active, .lens:active, .menu-btn:active, .lang button:active, .theme:active { transform: none; }
+    .bar.open .menu, .err:not(:empty), .status:not(:empty) { animation: fadeOnly 150ms ease; }
+    .face > div { transition: opacity 200ms ease !important; transition-delay: 0s !important; }
+    .face .side-a, .face .side-b, .flipped .face .side-a, .flipped .face .side-b { transform: none !important; }
+    .hero .mark .k { animation: none; transform: scaleX(-1); }
+    .lens .dot { transition: none; }
   }
 </style>
 </head>
@@ -437,14 +465,21 @@
 <header class="bar" id="bar">
   <div class="wrap">
     <a class="mark" href="#top" aria-label="Aneker, inicio" tabindex="-1" id="miniMark">ane<span class="k">k</span>er</a>
+    <div class="bar-right">
+    <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">
+      <svg class="i-bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      <span data-l="es">Menú</span><span data-l="en">Menu</span>
+    </button>
+    <div class="menu" id="menu">
     <nav class="main" aria-label="Principal">
       <a href="#servicios"><span data-l="es">Servicios</span><span data-l="en">Services</span></a>
       <a href="#metodo"><span data-l="es">Cómo trabajamos</span><span data-l="en">How we work</span></a>
       <a href="#equipo"><span data-l="es">Equipo</span><span data-l="en">Team</span></a>
       <a href="#cuaderno"><span data-l="es">Cuaderno</span><span data-l="en">Notebook</span></a>
       <a href="#herramientas"><span data-l="es">Herramientas</span><span data-l="en">Tools</span></a>
-      <a href="#contacto"><span data-l="es">Contacto</span><span data-l="en">Contact</span></a>
     </nav>
+    <a class="nav-cta" href="#contacto"><span data-l="es">Contacto</span><span data-l="en">Contact</span></a>
     <div class="tools">
       <div class="lang" role="group" aria-label="Idioma / Language">
         <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
@@ -454,6 +489,8 @@
         <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
         <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
       </button>
+    </div>
+    </div>
     </div>
   </div>
 </header>
@@ -479,7 +516,7 @@
           </div>
         </div>
       </div>
-      <figure class="photo reveal hero-photo"><img src="img/portada.jpg" alt="" data-alt-es="Archivo de documentos ordenado en una oficina" data-alt-en="An organised document archive in an office" loading="lazy"><span class="hint"><span data-l="es">Foto de portada (img/portada.jpg): oficina real, archivo o personas trabajando con documentos</span><span data-l="en">Cover photo (img/portada.jpg): a real office, archive or people working with documents</span></span></figure>
+      <figure class="photo reveal hero-photo"><img src="img/portada.jpg" width="1024" height="352" alt="Archivo de documentos ordenado en una oficina" data-alt-es="Archivo de documentos ordenado en una oficina" data-alt-en="An organised document archive in an office" fetchpriority="high"></figure>
     </div>
   </section>
 
@@ -495,7 +532,7 @@
         </div>
       </div>
 
-      <div class="rows" id="lensRows" aria-live="polite">
+      <div class="rows" id="lensRows">
         <div class="srow">
           <h3><span data-l="es">Consultoría de procesos</span><span data-l="en">Process consulting</span></h3>
           <div class="face" style="--i:0">
@@ -572,7 +609,7 @@
       </div>
       <div class="founder">
         <div>
-          <figure class="photo reveal"><img src="img/equipo.jpg" alt="" data-alt-es="Equipo Aneker" data-alt-en="Aneker team" loading="lazy"><span class="hint"><span data-l="es">Foto del equipo (img/equipo.jpg): retrato natural, mejor en un entorno de trabajo real</span><span data-l="en">Team photo (img/equipo.jpg): a natural portrait, ideally in a real work setting</span></span></figure>
+          <figure class="photo reveal"><img src="img/equipo-800.webp" srcset="img/equipo-480.webp 480w, img/equipo-800.webp 800w" sizes="(max-width: 960px) 360px, 410px" width="800" height="1000" alt="Equipo Aneker" data-alt-es="Equipo Aneker" data-alt-en="Aneker team" loading="lazy"></figure>
         </div>
         <div>
           <p data-l="es">Detrás de Aneker hay más de 35 años de experiencia en tecnología, gestión documental y procesos digitales. Conocemos todas las fases de un proyecto: preventa, estimación de esfuerzo, consultoría técnica e implantación de principio a fin.</p>
@@ -587,74 +624,32 @@
         </div>
       </div>
 
-      <h3 class="agents-title"><span data-l="es">Nuestro equipo digital</span><span data-l="en">Our digital team</span></h3>
-      <p class="agents-note" data-l="es">Trabajamos junto a agentes de inteligencia artificial que hemos creado nosotros. Hacen el trabajo repetitivo en minutos; las personas revisan, deciden y responden. Sus nombres se leen igual al derecho y al revés.</p>
-      <p class="agents-note" data-l="en">We work alongside artificial intelligence agents we built ourselves. They handle repetitive work in minutes; people review, decide and answer. Their names read the same forwards and backwards.</p>
-      <div class="agents">
-        <div class="agent-card">
-          <div class="agent-avatar">A</div>
-          <h4 class="agent-name">Ana</h4>
-          <div class="agent-role"><span data-l="es">Documentos · agente de IA</span><span data-l="en">Documents · AI agent</span></div>
-          <p data-l="es">Lee, clasifica y extrae datos de facturas, contratos y expedientes.</p>
-          <p data-l="en">Reads, classifies and extracts data from invoices, contracts and files.</p>
+      <div class="support">
+        <div>
+          <h3><span data-l="es">Nuestro equipo digital</span><span data-l="en">Our digital team</span></h3>
+          <p class="agents-note" data-l="es">Trabajamos junto a agentes de inteligencia artificial que hemos creado nosotros. Hacen el trabajo repetitivo en minutos; las personas revisan, deciden y responden. Sus nombres se leen igual al derecho y al revés.</p>
+          <p class="agents-note" data-l="en">We work alongside artificial intelligence agents we built ourselves. They handle repetitive work in minutes; people review, decide and answer. Their names read the same forwards and backwards.</p>
+          <ul class="agents">
+            <li><b>Ana<small><span data-l="es">Documentos · agente de IA</span><span data-l="en">Documents · AI agent</span></small></b><span class="what" data-l="es">Lee, clasifica y extrae datos de facturas, contratos y expedientes.</span><span class="what" data-l="en">Reads, classifies and extracts data from invoices, contracts and files.</span></li>
+            <li><b>Otto<small><span data-l="es">Estimaciones · agente de IA</span><span data-l="en">Estimates · AI agent</span></small></b><span class="what" data-l="es">Prepara estimaciones de esfuerzo, planificaciones y borradores de propuesta.</span><span class="what" data-l="en">Drafts effort estimates, project plans and proposal outlines.</span></li>
+            <li><b>Ava<small><span data-l="es">Análisis · agente de IA</span><span data-l="en">Analysis · AI agent</span></small></b><span class="what" data-l="es">Analiza procesos y datos para encontrar cuellos de botella y oportunidades.</span><span class="what" data-l="en">Analyses processes and data to find bottlenecks and opportunities.</span></li>
+            <li><b>Bob<small><span data-l="es">Asistencia · agente de IA</span><span data-l="en">Assistance · AI agent</span></small></b><span class="what" data-l="es">Resuelve dudas técnicas y prepara documentación para los equipos.</span><span class="what" data-l="en">Answers technical questions and prepares documentation for teams.</span></li>
+          </ul>
         </div>
-        <div class="agent-card">
-          <div class="agent-avatar">O</div>
-          <h4 class="agent-name">Otto</h4>
-          <div class="agent-role"><span data-l="es">Estimaciones · agente de IA</span><span data-l="en">Estimates · AI agent</span></div>
-          <p data-l="es">Prepara estimaciones de esfuerzo, planificaciones y borradores de propuesta.</p>
-          <p data-l="en">Drafts effort estimates, project plans and proposal outlines.</p>
-        </div>
-        <div class="agent-card">
-          <div class="agent-avatar">A</div>
-          <h4 class="agent-name">Ava</h4>
-          <div class="agent-role"><span data-l="es">Análisis · agente de IA</span><span data-l="en">Analysis · AI agent</span></div>
-          <p data-l="es">Analiza procesos y datos para encontrar cuellos de botella y oportunidades.</p>
-          <p data-l="en">Analyses processes and data to find bottlenecks and opportunities.</p>
-        </div>
-        <div class="agent-card">
-          <div class="agent-avatar">B</div>
-          <h4 class="agent-name">Bob</h4>
-          <div class="agent-role"><span data-l="es">Asistencia · agente de IA</span><span data-l="en">Assistance · AI agent</span></div>
-          <p data-l="es">Resuelve dudas técnicas y prepara documentación para los equipos.</p>
-          <p data-l="en">Answers technical questions and prepares documentation for teams.</p>
+        <div>
+          <h3><span data-l="es">Nuestra red de especialistas</span><span data-l="en">Our specialist network</span></h3>
+          <p class="agents-note" data-l="es">Cuando un proyecto lo necesita, sumamos especialistas de confianza. Tú sigues teniendo un único interlocutor.</p>
+          <p class="agents-note" data-l="en">When a project needs it, we bring in trusted specialists. You still have one single point of contact.</p>
+          <ul class="roles">
+            <li><b><span data-l="es">Integración de sistemas</span><span data-l="en">Systems integration</span></b><span class="what" data-l="es">ERP, bases de datos y conectores entre aplicaciones.</span><span class="what" data-l="en">ERP, databases and connectors between applications.</span></li>
+            <li><b><span data-l="es">Arquitectura cloud</span><span data-l="en">Cloud architecture</span></b><span class="what" data-l="es">Diseño y despliegue de soluciones en la nube.</span><span class="what" data-l="en">Design and deployment of cloud solutions.</span></li>
+            <li><b><span data-l="es">Seguridad y cumplimiento</span><span data-l="en">Security and compliance</span></b><span class="what" data-l="es">Protección de datos, normativa y auditorías.</span><span class="what" data-l="en">Data protection, regulation and audits.</span></li>
+            <li><b><span data-l="es">Desarrollo a medida</span><span data-l="en">Custom development</span></b><span class="what" data-l="es">Aplicaciones, automatizaciones y scripts específicos.</span><span class="what" data-l="en">Applications, automations and bespoke scripts.</span></li>
+            <li><b><span data-l="es">Firma digital y validez legal</span><span data-l="en">Digital signature and legal validity</span></b><span class="what" data-l="es">Certificados digitales, firma electrónica y validación de documentos.</span><span class="what" data-l="en">Digital certificates, electronic signatures and document validation.</span></li>
+            <li><b><span data-l="es">UX y diseño de sistemas</span><span data-l="en">UX and systems design</span></b><span class="what" data-l="es">Experiencia de usuario, interfaces y arquitectura de información.</span><span class="what" data-l="en">User experience, interfaces and information architecture.</span></li>
+          </ul>
         </div>
       </div>
-
-      <h3 class="agents-title"><span data-l="es">Nuestra red de especialistas</span><span data-l="en">Our specialist network</span></h3>
-      <p class="agents-note" data-l="es">Cuando un proyecto lo necesita, sumamos especialistas de confianza. Tú sigues teniendo un único interlocutor.</p>
-      <p class="agents-note" data-l="en">When a project needs it, we bring in trusted specialists. You still have one single point of contact.</p>
-      <div class="roles">
-        <div class="roleitem">
-          <h4><span data-l="es">Integración de sistemas</span><span data-l="en">Systems integration</span></h4>
-          <p data-l="es">ERP, bases de datos y conectores entre aplicaciones.</p>
-          <p data-l="en">ERP, databases and connectors between applications.</p>
-        </div>
-        <div class="roleitem">
-          <h4><span data-l="es">Arquitectura cloud</span><span data-l="en">Cloud architecture</span></h4>
-          <p data-l="es">Diseño y despliegue de soluciones en la nube.</p>
-          <p data-l="en">Design and deployment of cloud solutions.</p>
-        </div>
-        <div class="roleitem">
-          <h4><span data-l="es">Seguridad y cumplimiento</span><span data-l="en">Security and compliance</span></h4>
-          <p data-l="es">Protección de datos, normativa y auditorías.</p>
-          <p data-l="en">Data protection, regulation and audits.</p>
-        </div>
-        <div class="roleitem">
-          <h4><span data-l="es">Desarrollo a medida</span><span data-l="en">Custom development</span></h4>
-          <p data-l="es">Aplicaciones, automatizaciones y scripts específicos.</p>
-          <p data-l="en">Applications, automations and bespoke scripts.</p>
-        </div>
-        <div class="roleitem">
-          <h4><span data-l="es">Firma digital y validez legal</span><span data-l="en">Digital signature and legal validity</span></h4>
-          <p data-l="es">Certificados digitales, firma electrónica y validación de documentos.</p>
-          <p data-l="en">Digital certificates, electronic signatures and document validation.</p>
-        </div>
-        <div class="roleitem">
-          <h4><span data-l="es">UX y diseño de sistemas</span><span data-l="en">UX and systems design</span></h4>
-          <p data-l="es">Experiencia de usuario, interfaces y arquitectura de información.</p>
-          <p data-l="en">User experience, interfaces and information architecture.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -669,7 +664,7 @@
       </div>
       <div class="notes">
         <article class="lead">
-          <figure class="photo reveal "><img src="img/cuaderno/ia-datos-basura.png" alt="Si entra basura, sale basura. Con IA, también." loading="lazy" width="1200" height="675"></figure>
+          <figure class="photo reveal "><img src="img/cuaderno/ia-datos-basura.webp" alt="Si entra basura, sale basura. Con IA, también." loading="lazy" width="1200" height="994"></figure>
           <p class="meta"><span data-l="es">Inteligencia artificial · 7 min de lectura</span><span data-l="en">Artificial intelligence · 7 min read</span></p>
           <h3><a href="/cuaderno/ia-no-arregla-un-proceso-desordenado/"><span data-l="es">La inteligencia artificial no arregla un proceso desordenado</span><span data-l="en">Artificial intelligence won't fix a messy process</span></a></h3>
           <p class="dek" data-l="es">Antes de automatizar conviene mirar el proceso desde el otro lado. Qué revisar primero y por qué.</p>
@@ -678,7 +673,7 @@
 
         <div>
           <article class="mini">
-            <figure class="photo reveal "><img src="img/cuaderno/facturas-flujo.png" alt="Una persona en el circuito" loading="lazy" width="400" height="400"></figure>
+            <figure class="photo reveal "><img src="img/cuaderno/facturas-flujo-thumb.webp" alt="Una persona en el circuito" loading="lazy" width="480" height="320"></figure>
             <div>
               <p class="meta"><span data-l="es">Inteligencia artificial · 5 min</span><span data-l="en">Artificial intelligence · 5 min</span></p>
               <h4><a href="/cuaderno/agentes-que-leen-facturas/"><span data-l="es">Agentes que leen facturas: qué funciona y qué no</span><span data-l="en">Agents that read invoices: what works and what doesn't</span></a></h4>
@@ -686,7 +681,7 @@
           </article>
 
           <article class="mini">
-            <figure class="photo reveal "><img src="img/cuaderno/estimar-iceberg.png" alt="Lo que se estima y lo que se olvida" loading="lazy" width="400" height="400"></figure>
+            <figure class="photo reveal "><img src="img/cuaderno/estimar-iceberg-thumb.webp" alt="Lo que se estima y lo que se olvida" loading="lazy" width="480" height="372"></figure>
             <div>
               <p class="meta"><span data-l="es">Consultoría · 8 min</span><span data-l="en">Consulting · 8 min</span></p>
               <h4><a href="/cuaderno/como-estimar-un-proyecto/"><span data-l="es">Cómo estimar un proyecto sin que se te vaya de las manos</span><span data-l="en">How to estimate a project without losing control</span></a></h4>
@@ -694,7 +689,7 @@
           </article>
 
           <article class="mini">
-            <figure class="photo reveal "><img src="img/cuaderno/archivo-antes-despues.png" alt="Del saco al archivo: el mismo contrato, antes y después" loading="lazy" width="400" height="400"></figure>
+            <figure class="photo reveal "><img src="img/cuaderno/archivo-antes-despues-thumb.webp" alt="Del saco al archivo: el mismo contrato, antes y después" loading="lazy" width="480" height="310"></figure>
             <div>
               <p class="meta"><span data-l="es">Gestión documental · 6 min</span><span data-l="en">Document management · 6 min</span></p>
               <h4><a href="/cuaderno/cinco-senales-archivo-necesita-revision/"><span data-l="es">Cinco señales de que tu archivo necesita una revisión</span><span data-l="en">Five signs your archive needs a review</span></a></h4>
@@ -702,7 +697,7 @@
           </article>
         </div>
       </div>
-      <p style="margin-top: 40px; text-align: center;"><a href="/cuaderno/" style="color: var(--red-text); text-decoration: underline; font-weight: 500;"><span data-l="es">Ver todo el cuaderno →</span><span data-l="en">See all articles →</span></a></p>
+      <p class="more"><a href="/cuaderno/"><span data-l="es">Ver todo el cuaderno →</span><span data-l="en">See all articles →</span></a></p>
     </div>
   </section>
 
@@ -714,28 +709,54 @@
         <p data-l="es">Desarrollamos aplicaciones para acelerar los proyectos y reducir errores. Algunas están disponibles para clientes y colaboradores.</p>
         <p data-l="en">We build applications that speed up projects and reduce errors. Some of them are available to clients and partners.</p>
       </div>
-      <div class="tool">
-        <div>
-          <h3>TheJTool</h3>
-          <p data-l="es">Una suite de utilidades para proyectos de gestión documental, todo en el navegador.</p>
-          <p data-l="en">A suite of utilities for document management projects, all in the browser.</p>
-          <ul data-l="es">
-            <li>Constructor de estructuras y categorías documentales</li>
-            <li>Diseño de formularios electrónicos</li>
-            <li>Estimaciones de esfuerzo y planificación tipo Gantt</li>
-            <li>Asistentes con IA</li>
-          </ul>
-          <ul data-l="en">
-            <li>Document structure and category builder</li>
-            <li>Electronic form designer</li>
-            <li>Effort estimates and Gantt-style planning</li>
-            <li>AI assistants</li>
-          </ul>
-          <a class="btn" href="https://app.aneker.es" target="_blank" rel="noopener"><span data-l="es">Acceder a TheJTool</span><span data-l="en">Sign in to TheJTool</span><span class="sr" data-l="es"> (se abre en una pestaña nueva)</span><span class="sr" data-l="en"> (opens in a new tab)</span></a>
-          <small data-l="es">Acceso para usuarios autorizados.</small>
-          <small data-l="en">For authorised users.</small>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: 40px;">
+        <div style="background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px -8px rgba(20, 32, 58, .15);">
+          <img src="img/TheJTool.png" alt="TheJTool" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+          <div style="padding: 32px;">
+            <h3 style="margin: 0 0 12px; font-size: 28px; font-weight: 800; letter-spacing: -0.025em; color: var(--ink);">TheJTool</h3>
+            <p style="margin: 0 0 20px; font-size: 16px;" data-l="es">Suite de utilidades para proyectos de gestión documental, todo en el navegador.</p>
+            <p style="margin: 0 0 20px; font-size: 16px;" data-l="en">Suite of utilities for document management projects, all in the browser.</p>
+            <ul style="margin: 0 0 24px; padding-left: 20px; font-size: 15.5px; line-height: 1.6;" data-l="es">
+              <li style="margin-bottom: 6px;">Constructor de estructuras documentales</li>
+              <li style="margin-bottom: 6px;">Diseño de formularios electrónicos</li>
+              <li style="margin-bottom: 6px;">Estimaciones y planificación Gantt</li>
+              <li style="margin-bottom: 6px;">Asistentes con IA</li>
+            </ul>
+            <ul style="margin: 0 0 24px; padding-left: 20px; font-size: 15.5px; line-height: 1.6;" data-l="en">
+              <li style="margin-bottom: 6px;">Document structure builder</li>
+              <li style="margin-bottom: 6px;">Electronic form designer</li>
+              <li style="margin-bottom: 6px;">Effort estimates and Gantt planning</li>
+              <li style="margin-bottom: 6px;">AI assistants</li>
+            </ul>
+            <a class="link" href="https://app.aneker.es" target="_blank" rel="noopener" style="font-size: 15px;"><span data-l="es">Acceder a TheJTool</span><span data-l="en">Sign in to TheJTool</span><span class="sr" data-l="es"> (se abre en una pestaña nueva)</span><span class="sr" data-l="en"> (opens in a new tab)</span></a>
+            <small style="display: block; margin-top: 8px; font-size: 13.5px; color: var(--muted);" data-l="es">Acceso para usuarios autorizados.</small>
+            <small style="display: block; margin-top: 8px; font-size: 13.5px; color: var(--muted);" data-l="en">For authorised users.</small>
+          </div>
         </div>
-        <figure class="photo reveal shot"><img src="img/thejtool.png" alt="" data-alt-es="Captura de pantalla de TheJTool" data-alt-en="Screenshot of TheJTool" loading="lazy"><span class="hint"><span data-l="es">Captura real de TheJTool (img/thejtool.png)</span><span data-l="en">A real TheJTool screenshot (img/thejtool.png)</span></span></figure>
+
+        <div style="background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px -8px rgba(20, 32, 58, .15);">
+          <img src="img/biome.jpg" alt="BIOME" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+          <div style="padding: 32px;">
+            <h3 style="margin: 0 0 12px; font-size: 28px; font-weight: 800; letter-spacing: -0.025em; color: var(--ink);">BIOME</h3>
+            <p style="margin: 0 0 20px; font-size: 16px;" data-l="es">Plataforma de huella ambiental. Convierte facturas y consumos en métricas trazables de CO₂e.</p>
+            <p style="margin: 0 0 20px; font-size: 16px;" data-l="en">Environmental footprint platform. Converts invoices and consumption into traceable CO₂e metrics.</p>
+            <ul style="margin: 0 0 24px; padding-left: 20px; font-size: 15.5px; line-height: 1.6;" data-l="es">
+              <li style="margin-bottom: 6px;">Lectura automática con IA</li>
+              <li style="margin-bottom: 6px;">Cálculo de huella de carbono</li>
+              <li style="margin-bottom: 6px;">Trazabilidad completa</li>
+              <li style="margin-bottom: 6px;">Seguimiento de biodiversidad</li>
+            </ul>
+            <ul style="margin: 0 0 24px; padding-left: 20px; font-size: 15.5px; line-height: 1.6;" data-l="en">
+              <li style="margin-bottom: 6px;">Automated AI reading</li>
+              <li style="margin-bottom: 6px;">Carbon footprint calculation</li>
+              <li style="margin-bottom: 6px;">Full traceability</li>
+              <li style="margin-bottom: 6px;">Biodiversity tracking</li>
+            </ul>
+            <a class="link" href="https://biome.aneker.es" target="_blank" rel="noopener" style="font-size: 15px;"><span data-l="es">Acceder a BIOME</span><span data-l="en">Sign in to BIOME</span><span class="sr" data-l="es"> (se abre en una pestaña nueva)</span><span class="sr" data-l="en"> (opens in a new tab)</span></a>
+            <small style="display: block; margin-top: 8px; font-size: 13.5px; color: var(--muted);" data-l="es">Disponible para clientes y colaboradores.</small>
+            <small style="display: block; margin-top: 8px; font-size: 13.5px; color: var(--muted);" data-l="en">Available to clients and partners.</small>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -750,26 +771,40 @@
           <p data-l="en">Tell us where you are. A real person will reply, not an automated system.</p>
           <a class="mail" id="lnkEmail" href="#"></a>
           <ul class="other">
-            <li><a id="lnkCal" href="#" target="_blank" rel="noopener"><span data-l="es">Agenda una reunión de 30 minutos, sin compromiso</span><span data-l="en">Book a 30-minute meeting, no strings attached</span></a></li>
+            <li id="calItem" hidden><a id="lnkCal" href="#" target="_blank" rel="noopener"><span data-l="es">Agenda una reunión de 30 minutos, sin compromiso</span><span data-l="en">Book a 30-minute meeting, no strings attached</span></a></li>
             <li><a id="lnkIn" href="#" target="_blank" rel="noopener"><span data-l="es">Síguenos en LinkedIn</span><span data-l="en">Follow us on LinkedIn</span></a></li>
           </ul>
         </div>
 
         <form id="contactForm" novalidate>
           <div class="two">
-            <label><span data-l="es">Nombre</span><span data-l="en">Name</span><input name="name" autocomplete="name" required></label>
-            <label>Email<input name="email" type="email" autocomplete="email" required></label>
+            <div class="field">
+              <label for="f-name"><span data-l="es">Nombre</span><span data-l="en">Name</span></label>
+              <input id="f-name" name="name" autocomplete="name" maxlength="100" required aria-describedby="e-name">
+              <p class="err" id="e-name"></p>
+            </div>
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="100" required aria-describedby="e-email">
+              <p class="err" id="e-email"></p>
+            </div>
           </div>
           <div class="two">
-            <label><span data-l="es">Empresa</span><span data-l="en">Company</span><input name="company" autocomplete="organization"></label>
-            <label><span data-l="es">Te interesa</span><span data-l="en">Interested in</span>
-              <select name="topic">
+            <div class="field">
+              <label for="f-company"><span data-l="es">Empresa</span><span data-l="en">Company</span> <span class="opt"><span data-l="es">(opcional)</span><span data-l="en">(optional)</span></span></label>
+              <input id="f-company" name="company" autocomplete="organization" maxlength="100">
+            </div>
+            <div class="field">
+              <label for="f-topic"><span data-l="es">Te interesa</span><span data-l="en">Interested in</span> <span class="opt"><span data-l="es">(opcional)</span><span data-l="en">(optional)</span></span></label>
+              <select id="f-topic" name="topic">
+                <option value="" data-l="es">Elige un tema</option>
                 <option value="procesos" data-l="es">Consultoría de procesos</option>
                 <option value="documental" data-l="es">Gestión documental</option>
                 <option value="ia" data-l="es">Inteligencia artificial</option>
                 <option value="tic" data-l="es">Consultoría TIC</option>
                 <option value="formacion" data-l="es">Formación</option>
                 <option value="otro" data-l="es">Otro tema</option>
+                <option value="" data-l="en">Choose a topic</option>
                 <option value="processes" data-l="en">Process consulting</option>
                 <option value="documents" data-l="en">Document management</option>
                 <option value="ai" data-l="en">Artificial intelligence</option>
@@ -777,14 +812,22 @@
                 <option value="training" data-l="en">Training</option>
                 <option value="other" data-l="en">Something else</option>
               </select>
-            </label>
+            </div>
           </div>
-          <label><span data-l="es">Mensaje</span><span data-l="en">Message</span><textarea name="message" required></textarea></label>
+          <div class="field">
+            <label for="f-message"><span data-l="es">Mensaje</span><span data-l="en">Message</span></label>
+            <textarea id="f-message" name="message" maxlength="5000" required aria-describedby="e-message c-message"></textarea>
+            <p class="err" id="e-message"></p>
+            <p class="counter" id="c-message" hidden></p>
+          </div>
           <input class="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <label class="consent">
-            <input type="checkbox" name="consent" required>
-            <span><span data-l="es">He leído la <a href="privacidad.html">política de privacidad</a> y acepto que uséis mis datos para responder a mi mensaje.</span><span data-l="en">I have read the <a href="privacidad.html">privacy policy</a> and agree to my details being used to reply to my message.</span></span>
-          </label>
+          <div class="field">
+            <label class="consent">
+              <input type="checkbox" name="consent" id="f-consent" required aria-describedby="e-consent">
+              <span><span data-l="es">He leído la <a href="privacidad.html">política de privacidad</a> y acepto que uséis mis datos para responder a mi mensaje.</span><span data-l="en">I have read the <a href="privacidad.html">privacy policy</a> and agree to my details being used to reply to my message.</span></span>
+            </label>
+            <p class="err" id="e-consent"></p>
+          </div>
           <div><button class="btn" type="submit"><span data-l="es">Enviar mensaje</span><span data-l="en">Send message</span></button></div>
           <p class="status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
@@ -810,7 +853,7 @@
   var CONFIG = {
     email: 'hola@aneker.es',
     linkedin: 'https://www.linkedin.com/company/aneker',
-    calendar: 'https://calendly.com/TU-USUARIO',
+    calendar: '', // Pon aquí tu enlace de Calendly (p. ej. 'https://calendly.com/tu-usuario'). Vacío = el enlace no se muestra.
     formEndpoint: '/api/contact'
   };
   /* ================================================ */
@@ -824,22 +867,34 @@
       es: {
         desc: 'Consultora de procesos, gestión documental e inteligencia artificial. Más de 35 años de experiencia. Otra mirada. Mejores resultados.',
         toLight: 'Cambiar a modo claro', toDark: 'Cambiar a modo oscuro',
-        missing: 'Escribe tu nombre, un email válido y el mensaje.',
-        consent: 'Para enviar el mensaje, acepta la política de privacidad.',
+        errName: 'Escribe tu nombre.',
+        errEmailEmpty: 'Escribe tu email para que podamos responderte.',
+        errEmail: 'Revisa el email: parece que falta algo (por ejemplo, nombre@empresa.es).',
+        errMsg: 'Cuéntanos brevemente qué necesitas.',
+        consent: 'Para enviar el mensaje, marca la casilla de la política de privacidad.',
+        fix: 'Revisa los campos marcados.',
         sending: 'Enviando…',
         ok: 'Gracias, te respondemos en menos de 24 horas laborables.',
-        fail: 'No se ha podido enviar. Escríbenos directamente a ',
+        fail: 'No se ha podido enviar el mensaje. Tu texto sigue en el formulario.',
+        failMail: 'Enviarlo por email',
+        chars: ' caracteres restantes',
         mailOpen: 'Se ha abierto tu programa de correo con el mensaje listo para enviar.',
         subject: 'Contacto desde aneker.es'
       },
       en: {
         desc: 'Consultancy in processes, document management and artificial intelligence. More than 35 years of experience. A different view. Better results.',
         toLight: 'Switch to light mode', toDark: 'Switch to dark mode',
-        missing: 'Enter your name, a valid email and your message.',
-        consent: 'Please accept the privacy policy to send your message.',
+        errName: 'Enter your name.',
+        errEmailEmpty: 'Enter your email so we can reply.',
+        errEmail: 'Check the email address: something seems to be missing (e.g. name@company.com).',
+        errMsg: 'Tell us briefly what you need.',
+        consent: 'To send your message, tick the privacy policy box.',
+        fix: 'Please check the highlighted fields.',
         sending: 'Sending…',
         ok: 'Thank you, we will reply within 24 business hours.',
-        fail: 'Could not send the message. Write to us directly at ',
+        fail: 'Your message could not be sent. Your text is still in the form.',
+        failMail: 'Send it by email',
+        chars: ' characters left',
         mailOpen: 'Your email app has opened with the message ready to send.',
         subject: 'Contact from aneker.es'
       }
@@ -850,7 +905,10 @@
     var mail = document.getElementById('lnkEmail');
     mail.href = 'mailto:' + CONFIG.email; mail.textContent = CONFIG.email;
     document.getElementById('lnkIn').href = CONFIG.linkedin;
-    document.getElementById('lnkCal').href = CONFIG.calendar;
+    if (CONFIG.calendar && CONFIG.calendar.indexOf('TU-') === -1) {
+      document.getElementById('lnkCal').href = CONFIG.calendar;
+      document.getElementById('calItem').hidden = false;
+    }
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Imágenes: si falta el archivo, se muestra un hueco con la indicación
@@ -882,8 +940,39 @@
       lens.querySelector('.lbl-b').hidden = !on;
     });
 
+    // Menú móvil
+    var bar = document.getElementById('bar');
+    var menuBtn = document.getElementById('menuBtn');
+    function setMenu(open) {
+      bar.classList.toggle('open', open);
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    menuBtn.addEventListener('click', function () { setMenu(!bar.classList.contains('open')); });
+    document.getElementById('menu').addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && bar.classList.contains('open')) { setMenu(false); menuBtn.focus(); }
+    });
+    document.addEventListener('click', function (e) { if (bar.classList.contains('open') && !bar.contains(e.target)) setMenu(false); });
+
+    // Navegación: marca la sección visible
+    var navLinks = document.querySelectorAll('nav.main a[href^="#"]');
+    if ('IntersectionObserver' in window) {
+      var secIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          navLinks.forEach(function (a) {
+            if (a.getAttribute('href') === '#' + e.target.id) a.setAttribute('aria-current', 'true');
+            else a.removeAttribute('aria-current');
+          });
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      ['top', 'servicios', 'metodo', 'equipo', 'cuaderno', 'herramientas', 'contacto'].forEach(function (id) {
+        var el = document.getElementById(id); if (el) secIO.observe(el);
+      });
+    }
+
     // Barra: muestra la marca pequeña al pasar la grande
-    var bar = document.getElementById('bar'), big = document.getElementById('bigMark'), mini = document.getElementById('miniMark');
+    var big = document.getElementById('bigMark'), mini = document.getElementById('miniMark');
     function onScroll() {
       var past = big.getBoundingClientRect().bottom < bar.offsetHeight;
       bar.classList.toggle('scrolled', past);
@@ -921,279 +1010,228 @@
     var form = document.getElementById('contactForm');
     var status = document.getElementById('formStatus');
     var submitBtn = form.querySelector('button[type="submit"]');
-    var formLoadTime = Date.now(); // Timestamp para protección antispam
+    var formLoadTime = Date.now(); // Protección antispam: el servidor rechaza envíos en menos de 3 s
+    var F = {
+      name: document.getElementById('f-name'),
+      email: document.getElementById('f-email'),
+      message: document.getElementById('f-message'),
+      consent: document.getElementById('f-consent')
+    };
+    var counter = document.getElementById('c-message');
+
+    function setStatus(kind, text, html) {
+      status.className = 'status' + (kind ? ' is-' + kind : '');
+      status.textContent = text || '';
+      if (html) status.appendChild(html);
+    }
+    function setErr(input, msg) {
+      var e = document.getElementById(input.getAttribute('aria-describedby').split(' ')[0]);
+      e.textContent = msg || '';
+      if (msg) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+    }
+    function validate(t) {
+      var errs = [];
+      var name = F.name.value.trim(), email = F.email.value.trim(), msg = F.message.value.trim();
+      setErr(F.name, name ? '' : t.errName); if (!name) errs.push(F.name);
+      var okMail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+      setErr(F.email, email ? (okMail ? '' : t.errEmail) : t.errEmailEmpty); if (!okMail) errs.push(F.email);
+      setErr(F.message, msg ? '' : t.errMsg); if (!msg) errs.push(F.message);
+      setErr(F.consent, F.consent.checked ? '' : t.consent); if (!F.consent.checked) errs.push(F.consent);
+      return errs;
+    }
+    // Quita el error del campo en cuanto se corrige
+    [F.name, F.email, F.message].forEach(function (inp) {
+      inp.addEventListener('input', function () { if (inp.getAttribute('aria-invalid') === 'true' && inp.value.trim()) setErr(inp, ''); });
+    });
+    F.email.addEventListener('blur', function () {
+      var v = F.email.value.trim();
+      if (v && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) setErr(F.email, T[lang()].errEmail);
+    });
+    F.consent.addEventListener('change', function () { if (F.consent.checked) setErr(F.consent, ''); });
+    F.message.addEventListener('input', function () {
+      var left = 5000 - F.message.value.length;
+      counter.hidden = left > 500;
+      counter.textContent = left + T[lang()].chars;
+    });
+
+    function mailtoLink(t, d, topicLabel) {
+      var body = d.name + (d.company ? ' (' + d.company + ')' : '') + '\n' + d.email + (topicLabel ? '\n' + topicLabel : '') + '\n\n' + d.message;
+      var a = document.createElement('a');
+      a.href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent(t.subject + (topicLabel ? ': ' + topicLabel : '')) + '&body=' + encodeURIComponent(body);
+      a.textContent = t.failMail + ' (' + CONFIG.email + ')';
+      return a;
+    }
 
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
       var t = T[lang()];
-      var d = new FormData(form);
-      var name = (d.get('name') || '').trim(), email = (d.get('email') || '').trim(), msg = (d.get('message') || '').trim();
+      var fd = new FormData(form);
 
       // Honeypot: si viene relleno, no hacer nada (silenciosamente)
-      if (d.get('_gotcha')) return;
+      if (fd.get('_gotcha')) return;
 
-      // Validación básica
-      if (!name || !msg || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        status.textContent = t.missing;
-        return;
-      }
-      if (!form.querySelector('input[name="consent"]').checked) {
-        status.textContent = t.consent;
+      var errs = validate(t);
+      if (errs.length) {
+        setStatus('err', t.fix);
+        errs[0].focus();
         return;
       }
 
-      var topic = select.selectedOptions[0] ? select.selectedOptions[0].getAttribute('value') : '';
+      var opt = select.selectedOptions[0];
+      var d = {
+        name: F.name.value.trim(),
+        email: F.email.value.trim(),
+        company: (fd.get('company') || '').trim(),
+        topic: opt ? opt.getAttribute('value') : '',
+        message: F.message.value.trim()
+      };
+      var topicLabel = opt && opt.value ? opt.textContent : '';
 
-      if (CONFIG.formEndpoint) {
-        // Enviar vía API serverless
-        status.textContent = t.sending;
-        submitBtn.disabled = true;
+      if (!CONFIG.formEndpoint) {
+        window.location.href = mailtoLink(t, d, topicLabel).href;
+        setStatus('info', t.mailOpen);
+        return;
+      }
 
-        // Preparar datos como JSON
-        var payload = {
-          name: name,
-          email: email,
-          company: (d.get('company') || '').trim(),
-          topic: topic,
-          message: msg,
-          consent: true,
-          _gotcha: d.get('_gotcha') || '',
-          _timestamp: formLoadTime
-        };
+      setStatus('info', t.sending);
+      submitBtn.disabled = true;
 
+      var payload = {
+        name: d.name, email: d.email, company: d.company, topic: d.topic, message: d.message,
+        consent: true, _gotcha: fd.get('_gotcha') || '', _timestamp: formLoadTime
+      };
+      // Si el formulario se rellena muy rápido (autocompletado), esperamos lo justo para no chocar con el antispam
+      var wait = Math.max(0, 3200 - (Date.now() - formLoadTime));
+
+      setTimeout(function () {
         fetch(CONFIG.formEndpoint, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(payload)
         })
         .then(function (r) {
-          return r.json().then(function(data) {
-            if (!r.ok) throw new Error(data.error || 'Network error');
+          return r.json().catch(function () { return {}; }).then(function (data) {
+            if (!r.ok || !data.ok) throw new Error(data.error || ('HTTP ' + r.status));
             return data;
           });
         })
-        .then(function (data) {
-          if (data.ok) {
-            form.reset();
-            setLang(lang());
-            status.textContent = t.ok;
-            formLoadTime = Date.now(); // Reset timestamp
-          } else {
-            throw new Error(data.error);
-          }
+        .then(function () {
+          form.reset();
+          setLang(lang());
+          counter.hidden = true;
+          setStatus('ok', t.ok);
+          formLoadTime = Date.now();
         })
-        .catch(function (err) {
-          console.error('Form error:', err);
-          status.textContent = t.fail + CONFIG.email;
+        .catch(function () {
+          var p = document.createElement('span');
+          p.appendChild(document.createElement('br'));
+          p.appendChild(mailtoLink(t, d, topicLabel));
+          setStatus('err', t.fail, p);
         })
-        .finally(function() {
-          submitBtn.disabled = false;
-        });
-      } else {
-        // Fallback a mailto si JavaScript está desactivado o no hay endpoint
-        var body = name + (d.get('company') ? ' (' + d.get('company') + ')' : '') + '\n' + email + '\n' + topic + '\n\n' + msg;
-        window.location.href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent(t.subject + ': ' + topic) + '&body=' + encodeURIComponent(body);
-        status.textContent = t.mailOpen;
-      }
+        .finally(function () { submitBtn.disabled = false; });
+      }, wait);
     });
   })();
 
-  // Animación de partículas tipo Strange Pixels: malla densa formando K con interacción del ratón
+  // Animación de partículas: "aneker" en malla de puntos que reacciona al ratón.
+  // Solo en pantallas con ratón y anchas; se detiene cuando está en reposo o fuera de la vista.
   (function () {
     var canvas = document.getElementById('kCanvas');
-    if (!canvas) { console.log('Canvas no encontrado'); return; }
+    if (!canvas || !canvas.getContext) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var fine = window.matchMedia('(pointer: fine) and (min-width: 641px)');
+    if (!fine.matches) return;
 
     var hero = document.querySelector('.hero');
-    function resize() {
-      canvas.width = hero.offsetWidth;
-      canvas.height = hero.offsetHeight * 0.45;
-      console.log('Canvas redimensionado:', canvas.width, 'x', canvas.height);
-      init();
-    }
-    window.addEventListener('resize', resize);
-
-    // Esperar a que la fuente Archivo cargue antes de iniciar
-    document.fonts.ready.then(function() {
-      console.log('Fuentes cargadas, iniciando animación');
-      resize();
-    });
-
     var ctx = canvas.getContext('2d');
     var particles = [];
     var mouse = { x: -9999, y: -9999, radius: 120 };
+    var color = '#C23B22';
+    var running = false, visible = true;
 
-    // Rastreo del ratón sobre la sección hero
-    hero.addEventListener('mousemove', function(e) {
-      var rect = hero.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-    });
-    hero.addEventListener('mouseleave', function() {
-      mouse.x = -9999;
-      mouse.y = -9999;
-    });
+    function readColor() { color = getComputedStyle(document.documentElement).getPropertyValue('--red').trim() || color; }
 
-    function Particle(baseX, baseY) {
-      this.baseX = baseX;
-      this.baseY = baseY;
-      this.x = baseX;
-      this.y = baseY;
-      this.vx = 0;
-      this.vy = 0;
-      this.size = 2;
-    }
-
-    Particle.prototype.update = function() {
-      // Repulsión del ratón (physics)
-      var dx = this.x - mouse.x;
-      var dy = this.y - mouse.y;
-      var dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist < mouse.radius) {
-        var force = (mouse.radius - dist) / mouse.radius;
-        var angle = Math.atan2(dy, dx);
-        this.vx += Math.cos(angle) * force * 2.5;
-        this.vy += Math.sin(angle) * force * 2.5;
-      }
-
-      // Fuerza de recuperación hacia posición base (spring)
-      var returnX = (this.baseX - this.x) * 0.08;
-      var returnY = (this.baseY - this.y) * 0.08;
-      this.vx += returnX;
-      this.vy += returnY;
-
-      // Fricción
-      this.vx *= 0.92;
-      this.vy *= 0.92;
-
-      // Actualizar posición
-      this.x += this.vx;
-      this.y += this.vy;
-    };
-
-    Particle.prototype.draw = function() {
-      ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--red').trim();
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fill();
-    };
+    function Particle(x, y) { this.baseX = x; this.baseY = y; this.x = x; this.y = y; this.vx = 0; this.vy = 0; }
 
     function init() {
       particles = [];
-      var w = canvas.width;
-      var h = canvas.height;
-
-      // Crear canvas temporal para renderizar "aneker" en fuente Archivo
-      var tempCanvas = document.createElement('canvas');
-      var tempW = 2400;
-      var tempH = 600;
-      tempCanvas.width = tempW;
-      tempCanvas.height = tempH;
-      var tempCtx = tempCanvas.getContext('2d');
-
-      // Configurar fuente (igual que el logo)
-      var fontSize = tempH * 0.75;
-      tempCtx.font = '800 ' + fontSize + 'px Archivo, sans-serif';
-      tempCtx.textBaseline = 'middle';
-      tempCtx.fillStyle = '#FFFFFF';
-
-      // Medir y dibujar cada parte del logo
-      var y = tempH / 2;
-      var x = 100;
-
-      // "ane"
-      tempCtx.fillText('ane', x, y);
-      x += tempCtx.measureText('ane').width;
-
-      // "k" invertida (como en el logo)
-      var kWidth = tempCtx.measureText('k').width;
-      tempCtx.save();
-      tempCtx.translate(x + kWidth, y);
-      tempCtx.scale(-1, 1);
-      tempCtx.fillText('k', 0, 0);
-      tempCtx.restore();
-      x += kWidth;
-
-      // "er"
-      tempCtx.fillText('er', x, y);
-
-      // Leer los píxeles
-      var imageData = tempCtx.getImageData(0, 0, tempW, tempH);
-      var pixels = imageData.data;
-
-      // Crear partículas donde hay píxeles de la letra
-      var spacing = 13; // Espaciado entre partículas (más abstracto, menos denso)
-
-      // Calcular escala y posición
-      var targetWidth = 950; // Tamaño fijo (10% mayor que el logo)
-      var scale = targetWidth / tempW;
-      var logoWidth = tempW * scale;
-      var logoHeight = tempH * scale;
-
-      // Centrar en la zona del slogan + texto descriptivo
-      var offsetX = (w - logoWidth) / 2; // Centrado horizontalmente
-      var offsetY = h * 0.40; // Offset 40%
-
-      for (var y = 0; y < tempH; y += spacing) {
-        for (var x = 0; x < tempW; x += spacing) {
-          var index = (y * tempW + x) * 4;
-          var alpha = pixels[index + 3];
-
-          // Si hay píxel (alpha > umbral), crear partícula
-          if (alpha > 50) {
-            var px = offsetX + x * scale;
-            var py = offsetY + y * scale;
-            particles.push(new Particle(px, py));
-          }
-        }
-      }
-
-      console.log('Partículas inicializadas:', particles.length);
-    }
-
-    function drawConnections() {
-      ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--red').trim();
-      ctx.lineWidth = 1;
-      var maxDist = 45;
-
-      for (var i = 0; i < particles.length; i++) {
-        for (var j = i + 1; j < Math.min(i + 15, particles.length); j++) {
-          var dx = particles[i].x - particles[j].x;
-          var dy = particles[i].y - particles[j].y;
-          var dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < maxDist) {
-            ctx.globalAlpha = (1 - dist / maxDist) * 0.5;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
+      var w = canvas.width, h = canvas.height;
+      var tmp = document.createElement('canvas'), tw = 2400, th = 600;
+      tmp.width = tw; tmp.height = th;
+      var t = tmp.getContext('2d');
+      t.font = '800 ' + (th * 0.75) + 'px Archivo, sans-serif';
+      t.textBaseline = 'middle';
+      t.fillStyle = '#FFFFFF';
+      var x = 100, y = th / 2;
+      t.fillText('ane', x, y); x += t.measureText('ane').width;
+      var kw = t.measureText('k').width;
+      t.save(); t.translate(x + kw, y); t.scale(-1, 1); t.fillText('k', 0, 0); t.restore();
+      x += kw; t.fillText('er', x, y);
+      var px = t.getImageData(0, 0, tw, th).data;
+      var spacing = 13;
+      var scale = Math.min(950, w * 0.9) / tw;
+      var offX = (w - tw * scale) / 2, offY = h * 0.40;
+      for (var yy = 0; yy < th; yy += spacing) {
+        for (var xx = 0; xx < tw; xx += spacing) {
+          if (px[(yy * tw + xx) * 4 + 3] > 50) particles.push(new Particle(offX + xx * scale, offY + yy * scale));
         }
       }
     }
 
-    function animate() {
+    function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Dibujar conexiones primero
-      drawConnections();
-
-      // Actualizar y dibujar partículas
-      ctx.globalAlpha = 1;
-      for (var i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
+      ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = 1;
+      var maxD = 45, n = particles.length;
+      for (var i = 0; i < n; i++) {
+        var a = particles[i];
+        for (var j = i + 1; j < Math.min(i + 15, n); j++) {
+          var b = particles[j], dx = a.x - b.x, dy = a.y - b.y, d = Math.sqrt(dx * dx + dy * dy);
+          if (d < maxD) { ctx.globalAlpha = (1 - d / maxD) * 0.5; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+        }
       }
-
-      requestAnimationFrame(animate);
+      ctx.globalAlpha = 1;
+      ctx.beginPath();
+      for (var k = 0; k < n; k++) { ctx.moveTo(particles[k].x + 2, particles[k].y); ctx.arc(particles[k].x, particles[k].y, 2, 0, Math.PI * 2); }
+      ctx.fill();
     }
 
-    console.log('Iniciando animación de partículas');
-    animate();
+    function step() {
+      var moving = false;
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i], dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.sqrt(dx * dx + dy * dy);
+        if (d < mouse.radius) {
+          var f = (mouse.radius - d) / mouse.radius, ang = Math.atan2(dy, dx);
+          p.vx += Math.cos(ang) * f * 2.5; p.vy += Math.sin(ang) * f * 2.5;
+        }
+        p.vx = (p.vx + (p.baseX - p.x) * 0.08) * 0.92;
+        p.vy = (p.vy + (p.baseY - p.y) * 0.08) * 0.92;
+        p.x += p.vx; p.y += p.vy;
+        if (Math.abs(p.vx) > 0.02 || Math.abs(p.vy) > 0.02) moving = true;
+      }
+      draw();
+      if ((moving || mouse.x > -9999) && visible) requestAnimationFrame(step);
+      else running = false;
+    }
+    function start() { if (!running && !reduce.matches && visible) { running = true; requestAnimationFrame(step); } }
+
+    function resize() {
+      canvas.width = hero.offsetWidth;
+      canvas.height = hero.offsetHeight * 0.45;
+      init(); readColor(); draw();
+    }
+
+    hero.addEventListener('mousemove', function (e) {
+      var r = hero.getBoundingClientRect();
+      mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+      start();
+    });
+    hero.addEventListener('mouseleave', function () { mouse.x = -9999; mouse.y = -9999; });
+    new MutationObserver(function () { readColor(); draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(hero);
+    }
+    var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(resize, 150); });
+    (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(resize);
   })();
 </script>
 
