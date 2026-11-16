@@ -35,10 +35,10 @@ h1 b { font-weight: 800; }
 .updated { font-size: 14px; color: var(--muted); margin-bottom: 36px; }
 h2 { margin: 36px 0 12px; font-family: 'Schibsted Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: var(--strong); display: flex; gap: 12px; align-items: baseline; }
 h2 .n { font-size: 13px; font-weight: 400; color: var(--accent-text); }
-p, li { font-size: 14.5px; line-height: 1.75; }
+p, li { font-size: 16px; line-height: 1.7; max-width: 68ch; }
 p { margin: 0 0 14px; }
 ul { margin: 0 0 14px; padding-left: 20px; }
-dl { display: grid; grid-template-columns: minmax(0, 180px) minmax(0, 1fr); gap: 10px 20px; margin: 0 0 14px; font-size: 14.5px; }
+dl { display: grid; grid-template-columns: minmax(0, 180px) minmax(0, 1fr); gap: 10px 20px; margin: 0 0 14px; font-size: 16px; max-width: 68ch; }
 dt { font-family: 'Schibsted Grotesk', sans-serif; font-size: 14px; color: var(--muted); padding-top: 4px; }
 dd { margin: 0; color: var(--strong); }
 .fill { background: var(--mark); color: var(--strong); padding: 0 6px; border-radius: 3px; font-family: 'Schibsted Grotesk', sans-serif; font-size: 14px; }
@@ -47,7 +47,8 @@ footer {
   max-width: 880px; margin: 0 auto; padding: 24px 0 40px; display: flex; flex-wrap: wrap;
   justify-content: space-between; gap: 8px 24px; font-size: 14px; color: var(--muted);
 }
-footer a { color: var(--muted); }
+footer a { color: var(--muted); display: inline-flex; align-items: center; min-height: 44px; }
+.back { display: inline-flex; align-items: center; min-height: 44px; }
 @media (max-width: 640px) {
   body { padding: 0; }
   .sheet { border: 0; }
