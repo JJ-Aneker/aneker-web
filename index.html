@@ -516,7 +516,12 @@
           </div>
         </div>
       </div>
-      <figure class="photo reveal hero-photo"><img src="img/portada.jpg" width="1024" height="352" alt="Archivo de documentos ordenado en una oficina" data-alt-es="Archivo de documentos ordenado en una oficina" data-alt-en="An organised document archive in an office" fetchpriority="high"></figure>
+      <figure class="photo reveal hero-photo">
+        <picture>
+          <source srcset="img/portada-900.webp 900w, img/portada-1600.webp 1600w" type="image/webp">
+          <img src="img/portada.jpg" srcset="img/portada-900.webp 900w, img/portada-1600.webp 1600w" sizes="(max-width: 960px) 900px, 1600px" width="1600" height="550" alt="Archivo de documentos ordenado en una oficina" data-alt-es="Archivo de documentos ordenado en una oficina" data-alt-en="An organised document archive in an office" fetchpriority="high">
+        </picture>
+      </figure>
     </div>
   </section>
 
